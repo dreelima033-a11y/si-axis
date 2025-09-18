@@ -1,23 +1,32 @@
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Si-Axis — Onde tecnologia encontra ensino </title>
+  <title>Si-Axis — Onde tecnologia encontra ensino</title>
   <meta name="description" content="Si-Axis — Tecnologia, Inteligência Artificial e Inovação" />
+
+  <!-- Meta Open Graph -->
+  <meta property="og:title" content="Si-Axis — Tecnologia & IA">
+  <meta property="og:description" content="Conteúdos sobre hardware, desempenho e inteligência artificial.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://dreelima033-a11y.github.io/si-axis/">
+
   <!-- Fonte (Google Fonts) -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+
   <style>
     :root{
       --bg:#0b0f14;
       --card:#0f1720;
       --muted:#9aa6b2;
-      --accent:#00d0ff; /* azul elétrico */
-      --accent-2:#38ff9a; /* verde neon alternativo */
+      --accent:#00d0ff;
+      --accent-2:#38ff9a;
       --glass: rgba(255,255,255,0.03);
       font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
     }
-    *{box-sizing:border-box}
-    html,body{height:100%}
+    *{box-sizing:border-box;}
+    html,body{height:100%;}
     body{
       margin:0;
       background:linear-gradient(180deg,#06080a 0%, #071018 60%);
@@ -26,9 +35,7 @@
       -moz-osx-font-smoothing:grayscale;
       line-height:1.45;
     }
-
-    /* Container */
-    .wrap{max-width:1100px;margin:0 auto;padding:28px}
+    .wrap{max-width:1100px;margin:0 auto;padding:28px;}
 
     /* Header */
     header{display:flex;align-items:center;justify-content:space-between;padding:10px 0}
@@ -44,10 +51,30 @@
     .hero{display:grid;grid-template-columns:1fr;gap:24px;margin:48px 0;align-items:center}
     .hero .title{font-size:34px;font-weight:800;margin:0}
     .hero p{color:var(--muted);margin:8px 0 0}
-    .hero-actions{margin-top:18px;display:flex;gap:12px}
+    .hero-actions{margin-top:18px;display:flex;gap:12px;flex-wrap:wrap}
     .btn{padding:12px 18px;border-radius:10px;border:0;cursor:pointer;font-weight:700}
     .btn-primary{background:var(--accent);color:#001;}
-    .btn-outline{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted)}
+
+    /* Botão do e-book */
+    .btn-ebook{
+      display:inline-block; 
+      padding:14px 28px; 
+      border-radius:12px; 
+      background: linear-gradient(90deg, #00d0ff, #0077ff); 
+      color:#fff; 
+      font-family:'Inter', sans-serif; 
+      font-weight:800; 
+      font-size:18px; 
+      text-decoration:none; 
+      box-shadow: 0 6px 20px rgba(0,0,0,0.6); 
+      transition: all 0.25s ease-in-out;
+      text-align:center;
+    }
+    .btn-ebook:hover{
+      transform: scale(1.08);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.8);
+      background: linear-gradient(90deg, #38caff, #005ce6);
+    }
 
     /* Cards */
     .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:24px}
@@ -63,7 +90,6 @@
 
     footer{padding:30px 0;text-align:center;color:var(--muted);font-size:13px}
 
-    /* Responsive */
     @media(min-width:860px){
       .hero{grid-template-columns:1fr 380px}
       .hero .title{font-size:42px}
@@ -74,12 +100,10 @@
   <div class="wrap">
     <header>
       <div class="logo">
-        <!-- Logo simples: 'Si' com destaque -->
         <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden>
           <rect x="0" y="0" width="64" height="64" rx="12" fill="transparent"/>
           <g transform="translate(8,8)">
             <text x="0" y="28" font-family="Inter, Arial" font-size="28" font-weight="800" fill="#9fbfd8">A</text>
-            <!-- Destaque do Si -->
             <text x="18" y="28" font-family="Inter, Arial" font-size="28" font-weight="900" fill="#00d0ff">Si</text>
           </g>
         </svg>
@@ -98,14 +122,15 @@
     </header>
 
     <main>
+      <!-- Hero -->
       <section id="home" class="hero">
         <div>
-          <h1 class="title"> Onde tecnologia encontra ensino </h1>
+          <h1 class="title">Onde tecnologia encontra ensino</h1>
           <p>Conteúdos práticos sobre hardware, desempenho e inteligência artificial — em linguagem acessível para quem quer aprender.</p>
           <div class="hero-actions">
             <button class="btn btn-primary">Conhecer o projeto</button>
-           
-         </div>
+            <a href="https://go.hotmart.com/O101872807C" target="_blank" class="btn-ebook">Comprar e-book</a>
+          </div>
 
           <div class="cards" aria-hidden>
             <div class="card">
@@ -125,57 +150,22 @@
             </div>
           </div>
         </div>
-       <!-- Área lateral: Preview do e-book -->
-<section id="home" class="hero">
-  <div>
-    <h1 class="title">IA</h1>
-    <p>Conteúdos práticos sobre hardware, desempenho e inteligência artificial — em linguagem acessível para quem quer aprender .</p>
+      </section>
 
-    <!-- Botão estiloso do e-book -->
-    <a href="https://go.hotmart.com/O101872807C" target="_blank"
-       style="
-          display:inline-block; 
-          padding:14px 28px; 
-          border-radius:12px; 
-          background: linear-gradient(90deg, #00d0ff, #0077ff); 
-          color:#fff; 
-          font-family:'Inter', sans-serif; 
-          font-weight:800; 
-          font-size:18px; 
-          text-decoration:none; 
-          box-shadow: 0 6px 20px rgba(0,0,0,0.6); 
-          transition: all 0.25s ease-in-out;
-          text-align:center;
-       ">
-      Comprar e-book
-    </a>
-
-    <style>
-      a:hover {
-        transform: scale(1.08);
-        box-shadow: 0 10px 25px rgba(0,0,0,0.8);
-        background: linear-gradient(90deg, #38caff, #005ce6);
-      }
-    </style>
-
-  </div>
-</section>
-
-
-
-
-
-
-
+      <!-- Sobre -->
       <section id="sobre">
         <h2>Sobre</h2>
         <p class="small">Si-Axis nasce do interesse por hardware, desempenho e didática: explicar o porquê das coisas e mostrar como montar soluções práticas com baixo custo. Conteúdo pensado para quem não quer apenas consumir, mas aprender fazendo.</p>
       </section>
 
+      <!-- Projetos -->
       <section id="projetos">
         <h2>Projetos</h2>
         <div class="cards">
           <div class="card">
+            <strong>Era da Computação — e-book</strong>
+            <p class="small">Resumo, divulgação e link para compra.</p>
+          </div>
           <div class="card">
             <strong>Guias & Tutoriais</strong>
             <p class="small">Manutenção, otimização, montagem.</p>
@@ -187,6 +177,7 @@
         </div>
       </section>
 
+      <!-- Contato -->
       <section id="contato" class="contact">
         <h2>Contato</h2>
         <p class="small">Quer falar direto? Clique no botão abaixo para abrir um chat no WhatsApp (número de exemplo).</p>
@@ -200,7 +191,6 @@
   </div>
 
   <script>
-    // JS mínimo: comportamento do botão (exemplo)
     document.querySelectorAll('.btn-primary').forEach(b => {
       b.addEventListener('click', () => {
         document.location.hash = '#projetos'
@@ -209,12 +199,3 @@
   </script>
 </body>
 </html>
-<meta property="og:title" content="Si-Axis — Tecnologia & IA">
-<meta property="og:description" content="Conteúdos sobre hardware, desempenho e inteligência artificial.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://seusite.com">
-
-
-
-
-
