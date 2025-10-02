@@ -32,31 +32,30 @@
 
     .wrap { max-width: 1100px; margin: 0 auto; padding: 28px; }
 
-    /* Header flexível com logo animado */
+    /* Header flexível e responsivo */
     header {
       display: flex;
+      flex-wrap: wrap;
       justify-content: space-between;
       align-items: center;
-      flex-wrap: wrap;
       padding: 10px 20px;
     }
 
+    /* Logo animado */
     .logo-animated svg {
-      width: 200px;
-      max-width: 45%;
+      width: 220px;
+      max-width: 100%;
       height: auto;
     }
 
-    /* Texto animado */
-    .asi, .axis, .ia {
+    .si, .axis {
       opacity: 0;
       transform: translateY(-10px);
       transition: all 0.6s ease;
     }
 
-    .asi.show { opacity: 1; transform: translateY(0); animation: glow 2s infinite alternate; }
+    .si.show { opacity: 1; transform: translateY(0); animation: glow 2s infinite alternate; }
     .axis.show { opacity: 1; transform: translateY(0); animation: glow 2s infinite alternate 0.8s; }
-    .ia.show { opacity: 1; transform: translateY(0); animation: glow 2s infinite alternate 1.6s; }
 
     @keyframes glow {
       0% { fill-opacity: 0.7; filter: drop-shadow(0 0 6px currentColor); }
@@ -64,10 +63,25 @@
       100% { fill-opacity: 0.8; filter: drop-shadow(0 0 6px currentColor); }
     }
 
-    .logo-animated .small { font-size: 14px; color: #9aa6b2; margin-top: 4px; }
+    .logo-animated .small {
+      font-size: 14px;
+      color: #9aa6b2;
+      margin-top: 4px;
+    }
 
-    nav { display: flex; gap: 18px; flex-wrap: wrap; }
-    nav a { font-weight: 600; color: var(--muted); transition: color 0.2s; }
+    /* Nav */
+    nav {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      margin-top: 10px;
+    }
+
+    nav a {
+      font-weight: 600;
+      color: #9aa6b2;
+      transition: color 0.2s;
+    }
     nav a:hover { color: var(--accent); }
 
     /* Hero */
@@ -114,21 +128,25 @@
       box-shadow: 0 0 20px #ff0000, 0 0 40px #ff4c4c, 0 0 60px #ff0000;
     }
 
-    @media(min-width:860px) { 
-      .hero { grid-template-columns: 1fr 380px; }
+    /* Responsividade do header */
+    @media(min-width:860px) {
+      header { flex-wrap: nowrap; }
+      nav { margin-top: 0; }
+    }
+
+    @media(min-width:1024px) {
       .hero .title { font-size: 42px; }
     }
   </style>
 </head>
 <body>
   <div class="wrap">
-    <!-- Header com logo animado -->
+    <!-- Header com logo animado Si-Axis -->
     <header>
       <div class="logo-animated">
-        <svg viewBox="0 0 300 80" xmlns="http://www.w3.org/2000/svg">
-          <text class="asi" x="0" y="50" font-family="Inter, Arial" font-size="48" font-weight="900" fill="#00d0ff">A S I</text>
-          <text class="axis" x="140" y="50" font-family="Inter, Arial" font-size="50" font-weight="900" fill="#38ff9a">Axis</text>
-          <text class="ia" x="280" y="50" font-family="Inter, Arial" font-size="52" font-weight="900" fill="#ffdd00">IA</text>
+        <svg viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg">
+          <text class="si" x="0" y="40" font-family="Inter, Arial" font-size="40" font-weight="900" fill="#00d0ff">Si</text>
+          <text class="axis" x="60" y="40" font-family="Inter, Arial" font-size="42" font-weight="900" fill="#38ff9a">-Axis</text>
         </svg>
         <div class="small">Tecnologia • Inteligência Artificial</div>
       </div>
@@ -220,15 +238,13 @@
   </div>
 
   <script>
-  window.addEventListener("DOMContentLoaded", () => {
-    const asi = document.querySelector(".asi");
-    const axis = document.querySelector(".axis");
-    const ia = document.querySelector(".ia");
+    window.addEventListener("DOMContentLoaded", () => {
+      const si = document.querySelector(".si");
+      const axis = document.querySelector(".axis");
 
-    setTimeout(() => asi.classList.add("show"), 500);
-    setTimeout(() => axis.classList.add("show"), 1300);
-    setTimeout(() => ia.classList.add("show"), 2100);
-  });
+      setTimeout(() => si.classList.add("show"), 500);
+      setTimeout(() => axis.classList.add("show"), 1300);
+    });
   </script>
 </body>
 </html>
