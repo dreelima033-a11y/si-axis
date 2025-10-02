@@ -16,201 +16,121 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
 
   <style>
-:root {
-  --bg: #0b0f14;
-  --card: #0f1720;
-  --muted: #9aa6b2;
-  --accent: #00d0ff;
-  --accent-2: #38ff9a;
-  --glass: rgba(255,255,255,0.03);
-  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
-}
+    :root {
+      --bg: #0b0f14;
+      --card: #0f1720;
+      --muted: #9aa6b2;
+      --accent: #00d0ff;
+      --accent-2: #38ff9a;
+      --glass: rgba(255,255,255,0.03);
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    }
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
-html, body { 
-  height: 100%; 
-  background: linear-gradient(180deg,#06080a 0%, #0b0f14 80%); 
-  color: #e6f0f6; 
-  line-height: 1.5; 
-  -webkit-font-smoothing: antialiased; 
-  -moz-osx-font-smoothing: grayscale; 
-}
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; background: linear-gradient(180deg,#06080a 0%, #071018 60%); color: #e6f0f6; line-height: 1.5; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+    a { text-decoration: none; color: inherit; }
 
-a { text-decoration: none; color: inherit; }
-.wrap { max-width: 1100px; margin: 0 auto; padding: 28px; }
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 28px; }
 
-/* Header */
-<header>
-  <div class="logo-animated">
-    <svg viewBox="0 0 300 80" xmlns="http://www.w3.org/2000/svg">
-      <!-- ASI separado -->
-      <text class="asi" x="0" y="50" font-family="Inter, Arial" font-size="48" font-weight="900" fill="#00d0ff">A S I</text>
-      <!-- Axis surgindo -->
-      <text class="axis" x="140" y="50" font-family="Inter, Arial" font-size="50" font-weight="900" fill="#38ff9a">Axis</text>
-      <!-- IA se juntando -->
-      <text class="ia" x="280" y="50" font-family="Inter, Arial" font-size="52" font-weight="900" fill="#ffdd00">IA</text>
-    </svg>
-    <div class="small">Tecnologia • Inteligência Artificial</div>
-  </div>
+    /* Header flexível com logo animado */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      padding: 10px 20px;
+    }
 
-  <nav>
-    <a href="#home">Home</a>
-    <a href="#sobre">Sobre</a>
-    <a href="#projetos">Projetos</a>
-    <a href="#contato">Contato</a>
-  </nav>
-</header>
+    .logo-animated svg {
+      width: 200px;
+      max-width: 45%;
+      height: auto;
+    }
 
-<style>
-/* Header flexível */
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  padding: 10px 20px;
-}
+    /* Texto animado */
+    .asi, .axis, .ia {
+      opacity: 0;
+      transform: translateY(-10px);
+      transition: all 0.6s ease;
+    }
 
-/* Logo animado maior mas limitado */
-.logo-animated svg {
-  width: 200px;       /* maior */
-  max-width: 45%;     /* nunca ultrapassa metade do header */
-  height: auto;
-}
+    .asi.show { opacity: 1; transform: translateY(0); animation: glow 2s infinite alternate; }
+    .axis.show { opacity: 1; transform: translateY(0); animation: glow 2s infinite alternate 0.8s; }
+    .ia.show { opacity: 1; transform: translateY(0); animation: glow 2s infinite alternate 1.6s; }
 
-/* Texto separado animado */
-.asi, .axis, .ia {
-  opacity: 0;
-  transform: translateY(-10px);
-  transition: all 0.6s ease;
-}
+    @keyframes glow {
+      0% { fill-opacity: 0.7; filter: drop-shadow(0 0 6px currentColor); }
+      50% { fill-opacity: 1; filter: drop-shadow(0 0 12px currentColor); }
+      100% { fill-opacity: 0.8; filter: drop-shadow(0 0 6px currentColor); }
+    }
 
-/* Sequência de aparição */
-.asi.show { 
-  opacity: 1; 
-  transform: translateY(0);
-  animation: glow 2s infinite alternate;
-}
-.axis.show {
-  opacity: 1; 
-  transform: translateY(0);
-  animation: glow 2s infinite alternate 0.8s;
-}
-.ia.show {
-  opacity: 1; 
-  transform: translateY(0);
-  animation: glow 2s infinite alternate 1.6s;
-}
+    .logo-animated .small { font-size: 14px; color: #9aa6b2; margin-top: 4px; }
 
-/* Brilho pulsante */
-@keyframes glow {
-  0% { fill-opacity: 0.7; filter: drop-shadow(0 0 6px currentColor); }
-  50% { fill-opacity: 1; filter: drop-shadow(0 0 12px currentColor); }
-  100% { fill-opacity: 0.8; filter: drop-shadow(0 0 6px currentColor); }
-}
+    nav { display: flex; gap: 18px; flex-wrap: wrap; }
+    nav a { font-weight: 600; color: var(--muted); transition: color 0.2s; }
+    nav a:hover { color: var(--accent); }
 
-/* Texto pequeno abaixo do logo */
-.logo-animated .small { 
-  font-size: 14px; 
-  color: #9aa6b2; 
-  margin-top: 4px; 
-}
+    /* Hero */
+    .hero { display: grid; grid-template-columns: 1fr; gap: 24px; margin: 48px 0; align-items: center; }
+    .hero .title { font-size: 34px; font-weight: 800; margin-bottom: 8px; }
+    .hero p { color: var(--muted); }
+    .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 18px; }
 
-/* Nav responsivo */
-nav {
-  display: flex;
-  gap: 18px;
-  flex-wrap: wrap;
-}
+    .btn { padding: 12px 18px; border-radius: 10px; border: 0; cursor: pointer; font-weight: 700; }
+    .btn-primary { background: var(--accent); color: #001; transition: transform 0.2s; }
+    .btn-primary:hover { transform: scale(1.05); }
 
-nav a {
-  font-weight: 600;
-  color: #9aa6b2;
-  transition: color 0.2s;
-}
-nav a:hover { color: #00d0ff; }
+    .btn-ebook { display: inline-block; padding: 14px 28px; border-radius: 12px; background: linear-gradient(90deg, #00d0ff, #0077ff); color: #fff; font-weight: 800; font-size: 18px; text-align: center; box-shadow: 0 6px 20px rgba(0,0,0,0.6); transition: all 0.25s ease-in-out; }
+    .btn-ebook:hover { transform: scale(1.08); box-shadow: 0 10px 25px rgba(0,0,0,0.8); background: linear-gradient(90deg, #38caff, #005ce6); }
 
-</style>
+    /* Cards */
+    .cards { display: grid; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); gap: 16px; margin-top: 24px; }
+    .card { background: var(--card); padding: 18px; border-radius: 14px; box-shadow: 0 6px 20px rgba(0,0,0,0.6); transition: transform 0.2s; }
+    .card:hover { transform: translateY(-5px); }
+    .small { font-size: 13px; color: var(--muted); }
 
-<script>
-window.addEventListener("DOMContentLoaded", () => {
-  const asi = document.querySelector(".asi");
-  const axis = document.querySelector(".axis");
-  const ia = document.querySelector(".ia");
+    section { margin: 44px 0; }
+    h2 { font-size: 20px; margin-bottom: 12px; }
 
-  setTimeout(() => asi.classList.add("show"), 500);
-  setTimeout(() => axis.classList.add("show"), 1300);
-  setTimeout(() => ia.classList.add("show"), 2100);
-});
-</script>
+    .contact a { display: inline-block; padding: 10px 14px; border-radius: 12px; background: linear-gradient(90deg, var(--accent), var(--accent-2)); color: #001019; font-weight: 800; }
 
+    footer { padding: 30px 0; text-align: center; color: var(--muted); font-size: 13px; }
 
-/* Hero */
-.hero { display: grid; grid-template-columns: 1fr; gap: 24px; margin: 48px 0; align-items: center; }
-.hero .title { font-size: 34px; font-weight: 800; margin-bottom: 8px; color: #e6f0f6; }
-.hero p { color: var(--muted); }
-.hero-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 18px; }
+    /* YouTube */
+    .btn-youtube {
+      display: inline-block;
+      padding: 14px 28px;
+      border-radius: 12px;
+      background: linear-gradient(90deg, #ff0000, #ff4c4c);
+      color: #fff;
+      font-weight: 800;
+      font-size: 18px;
+      text-align: center;
+      box-shadow: 0 0 10px #ff0000, 0 0 20px #ff4c4c, 0 0 30px #ff0000;
+      transition: all 0.3s ease-in-out;
+    }
+    .btn-youtube:hover {
+      transform: scale(1.08);
+      box-shadow: 0 0 20px #ff0000, 0 0 40px #ff4c4c, 0 0 60px #ff0000;
+    }
 
-.btn { padding: 12px 18px; border-radius: 10px; border: 0; cursor: pointer; font-weight: 700; }
-.btn-primary { background: var(--accent); color: #001; transition: transform 0.2s; }
-.btn-primary:hover { transform: scale(1.05); }
-
-.btn-ebook { display: inline-block; padding: 14px 28px; border-radius: 12px; background: linear-gradient(90deg, #00d0ff, #0077ff); color: #fff; font-weight: 800; font-size: 18px; text-align: center; box-shadow: 0 6px 20px rgba(0,0,0,0.6); transition: all 0.25s ease-in-out; }
-.btn-ebook:hover { transform: scale(1.08); box-shadow: 0 10px 25px rgba(0,0,0,0.8); background: linear-gradient(90deg, #38caff, #005ce6); }
-
-/* Cards */
-.cards { display: grid; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); gap: 16px; margin-top: 24px; }
-.card { background: var(--card); padding: 18px; border-radius: 14px; box-shadow: 0 6px 20px rgba(0,0,0,0.6); transition: transform 0.2s; color: #e6f0f6; }
-.card:hover { transform: translateY(-5px); }
-.small { font-size: 13px; color: var(--muted); }
-
-section { margin: 44px 0; }
-h2 { font-size: 20px; margin-bottom: 12px; color: #e6f0f6; }
-
-.contact a { display: inline-block; padding: 10px 14px; border-radius: 12px; background: linear-gradient(90deg, var(--accent), var(--accent-2)); color: #001019; font-weight: 800; }
-
-footer { padding: 30px 0; text-align: center; color: var(--muted); font-size: 13px; }
-
-@media(min-width:860px) { 
-  .hero { grid-template-columns: 1fr 380px; }
-  .hero .title { font-size: 42px; }
-}
-
-/* YouTube Button */
-.btn-youtube {
-  display: inline-block;
-  padding: 14px 28px;
-  border-radius: 12px;
-  background: linear-gradient(90deg, #ff0000, #ff4c4c);
-  color: #fff;
-  font-weight: 800;
-  font-size: 18px;
-  text-align: center;
-  box-shadow: 0 0 10px #ff0000, 0 0 20px #ff4c4c, 0 0 30px #ff0000;
-  transition: all 0.3s ease-in-out;
-}
-.btn-youtube:hover {
-  transform: scale(1.08);
-  box-shadow: 0 0 20px #ff0000, 0 0 40px #ff4c4c, 0 0 60px #ff0000;
-}
-</style>
+    @media(min-width:860px) { 
+      .hero { grid-template-columns: 1fr 380px; }
+      .hero .title { font-size: 42px; }
+    }
+  </style>
 </head>
 <body>
   <div class="wrap">
-    <!-- Header -->
+    <!-- Header com logo animado -->
     <header>
-      <div class="logo">
-        <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <rect width="64" height="64" rx="12" fill="transparent"/>
-          <g transform="translate(8,8)">
-            <text x="0" y="28" font-family="Inter, Arial" font-size="28" font-weight="800" fill="#9fbfd8">A</text>
-            <text x="18" y="28" font-family="Inter, Arial" font-size="28" font-weight="900" fill="#00d0ff">Si</text>
-          </g>
+      <div class="logo-animated">
+        <svg viewBox="0 0 300 80" xmlns="http://www.w3.org/2000/svg">
+          <text class="asi" x="0" y="50" font-family="Inter, Arial" font-size="48" font-weight="900" fill="#00d0ff">A S I</text>
+          <text class="axis" x="140" y="50" font-family="Inter, Arial" font-size="50" font-weight="900" fill="#38ff9a">Axis</text>
+          <text class="ia" x="280" y="50" font-family="Inter, Arial" font-size="52" font-weight="900" fill="#ffdd00">IA</text>
         </svg>
-        <div>
-          <div class="brand">Si-<span class="si">Axis</span></div>
-          <div class="small">Tecnologia • Inteligência Artificial</div>
-        </div>
+        <div class="small">Tecnologia • Inteligência Artificial</div>
       </div>
 
       <nav>
@@ -261,11 +181,54 @@ footer { padding: 30px 0; text-align: center; color: var(--muted); font-size: 13
       <!-- Projetos -->
       <section id="projetos">
         <h2>Projetos</h2>
-<!-- YouTube -->
-<section id="youtube">
-  <h2>Nosso Canal no YouTube</h2>
-  <p class="small">Confira vídeos exclusivos sobre tecnologia, manutenção de PCs e inteligência artificial.</p>
-  <a href="https://www.youtube.com/@Si-Axis" target="_blank" class="btn-youtube">
-    <span style="margin-right:8px;">&#9658;</span> YouTube
-  </a>
-</section>
+        <div class="cards">
+          <div class="card">
+            <strong>Era da Computação — e-book</strong>
+            <p class="small">Resumo, divulgação e link para compra.</p>
+          </div>
+          <div class="card">
+            <strong>Guias & Tutoriais</strong>
+            <p class="small">Manutenção, otimização, montagem.</p>
+          </div>
+          <div class="card">
+            <strong>Fórum</strong>
+            <p class="small">Comunidade para trocar conhecimento.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contato -->
+      <section id="contato" class="contact">
+        <h2>Contato</h2>
+        <p class="small">Fale direto pelo WhatsApp clicando no botão abaixo:</p>
+        <a href="https://wa.me/5511949354732" target="_blank" rel="noopener">Abrir WhatsApp</a>
+      </section>
+
+      <!-- YouTube -->
+      <section id="youtube">
+        <h2>Nosso Canal no YouTube</h2>
+        <p class="small">Confira vídeos exclusivos sobre tecnologia, manutenção de PCs e inteligência artificial.</p>
+        <a href="https://www.youtube.com/@Si-Axis" target="_blank" class="btn-youtube">
+          <span style="margin-right:8px;">&#9658;</span> YouTube
+        </a>
+      </section>
+    </main>
+
+    <footer>
+      © Si-Axis — Foco em aprendizado prático e tecnologia.
+    </footer>
+  </div>
+
+  <script>
+  window.addEventListener("DOMContentLoaded", () => {
+    const asi = document.querySelector(".asi");
+    const axis = document.querySelector(".axis");
+    const ia = document.querySelector(".ia");
+
+    setTimeout(() => asi.classList.add("show"), 500);
+    setTimeout(() => axis.classList.add("show"), 1300);
+    setTimeout(() => ia.classList.add("show"), 2100);
+  });
+  </script>
+</body>
+</html>
