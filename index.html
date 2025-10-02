@@ -40,59 +40,110 @@ a { text-decoration: none; color: inherit; }
 .wrap { max-width: 1100px; margin: 0 auto; padding: 28px; }
 
 /* Header */
-header { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; flex-wrap: wrap; }
-.logo { display: flex; align-items: center; gap: 12px; }
+<header>
+  <div class="logo-animated">
+    <svg viewBox="0 0 300 80" xmlns="http://www.w3.org/2000/svg">
+      <!-- ASI separado -->
+      <text class="asi" x="0" y="50" font-family="Inter, Arial" font-size="48" font-weight="900" fill="#00d0ff">A S I</text>
+      <!-- Axis surgindo -->
+      <text class="axis" x="140" y="50" font-family="Inter, Arial" font-size="50" font-weight="900" fill="#38ff9a">Axis</text>
+      <!-- IA se juntando -->
+      <text class="ia" x="280" y="50" font-family="Inter, Arial" font-size="52" font-weight="900" fill="#ffdd00">IA</text>
+    </svg>
+    <div class="small">Tecnologia • Inteligência Artificial</div>
+  </div>
 
-/* Logo maior, animado e futurista */
-.logo svg { 
-  width: 80px; 
-  height: 80px; 
-  transition: transform 0.3s ease, filter 0.3s ease;
-  animation: floatLogo 3s ease-in-out infinite alternate;
-  filter: drop-shadow(0 0 6px #00d0ff);
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#sobre">Sobre</a>
+    <a href="#projetos">Projetos</a>
+    <a href="#contato">Contato</a>
+  </nav>
+</header>
+
+<style>
+/* Header flexível */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 10px 20px;
 }
 
-@media(min-width:860px) {
-  .logo svg { width: 100px; height: 100px; }
+/* Logo animado maior mas limitado */
+.logo-animated svg {
+  width: 200px;       /* maior */
+  max-width: 45%;     /* nunca ultrapassa metade do header */
+  height: auto;
 }
 
-@keyframes floatLogo {
-  0% { transform: translateY(0); }
-  50% { transform: translateY(-6px); }
-  100% { transform: translateY(0); }
+/* Texto separado animado */
+.asi, .axis, .ia {
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: all 0.6s ease;
 }
 
-.logo:hover svg {
-  transform: scale(1.1) translateY(-3px);
-  filter: drop-shadow(0 0 10px #38ff9a);
+/* Sequência de aparição */
+.asi.show { 
+  opacity: 1; 
+  transform: translateY(0);
+  animation: glow 2s infinite alternate;
+}
+.axis.show {
+  opacity: 1; 
+  transform: translateY(0);
+  animation: glow 2s infinite alternate 0.8s;
+}
+.ia.show {
+  opacity: 1; 
+  transform: translateY(0);
+  animation: glow 2s infinite alternate 1.6s;
 }
 
-/* Texto “Si-Axis” animado e futurista */
-.logo .brand {
-  display: inline-block;
-  font-weight: 800;
-  letter-spacing: 0.6px;
-  transition: transform 0.3s ease, color 0.3s ease, text-shadow 0.3s ease;
-  animation: floatText 3s ease-in-out infinite alternate;
-  text-shadow: 0 0 6px #00d0ff;
+/* Brilho pulsante */
+@keyframes glow {
+  0% { fill-opacity: 0.7; filter: drop-shadow(0 0 6px currentColor); }
+  50% { fill-opacity: 1; filter: drop-shadow(0 0 12px currentColor); }
+  100% { fill-opacity: 0.8; filter: drop-shadow(0 0 6px currentColor); }
 }
 
-.logo .brand .si { color: var(--accent); font-weight: 900; }
-
-@keyframes floatText {
-  0% { transform: translateY(0); }
-  50% { transform: translateY(-4px); }
-  100% { transform: translateY(0); }
+/* Texto pequeno abaixo do logo */
+.logo-animated .small { 
+  font-size: 14px; 
+  color: #9aa6b2; 
+  margin-top: 4px; 
 }
 
-.logo:hover .brand {
-  transform: scale(1.05) translateY(-2px);
-  text-shadow: 0 0 12px #38ff9a, 0 0 20px #00d0ff;
+/* Nav responsivo */
+nav {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
 }
 
-nav { display: flex; gap: 18px; flex-wrap: wrap; }
-nav a { font-weight: 600; color: var(--muted); transition: color 0.2s; }
-nav a:hover { color: var(--accent); }
+nav a {
+  font-weight: 600;
+  color: #9aa6b2;
+  transition: color 0.2s;
+}
+nav a:hover { color: #00d0ff; }
+
+</style>
+
+<script>
+window.addEventListener("DOMContentLoaded", () => {
+  const asi = document.querySelector(".asi");
+  const axis = document.querySelector(".axis");
+  const ia = document.querySelector(".ia");
+
+  setTimeout(() => asi.classList.add("show"), 500);
+  setTimeout(() => axis.classList.add("show"), 1300);
+  setTimeout(() => ia.classList.add("show"), 2100);
+});
+</script>
+
 
 /* Hero */
 .hero { display: grid; grid-template-columns: 1fr; gap: 24px; margin: 48px 0; align-items: center; }
