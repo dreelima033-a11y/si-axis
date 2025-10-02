@@ -1,179 +1,86 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Si-Axis — Tecnologia e Aprendizado Prático</title>
-  <meta name="description" content="Si-Axis oferece conteúdos práticos sobre hardware, desempenho e inteligência artificial para iniciantes e entusiastas.">
-
-  <!-- Open Graph -->
-  <meta property="og:title" content="Si-Axis — Tecnologia & IA">
-  <meta property="og:description" content="Aprenda sobre hardware, desempenho de PCs e inteligência artificial de forma prática e acessível.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://dreelima033-a11y.github.io/si-axis/">
-
-  <!-- Fonte -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
-
-  <style>
-    :root {
-      --bg: #0b0f14;
-      --card: #0f1720;
-      --muted: #9aa6b2;
-      --accent: #00d0ff;
-      --accent-2: #38ff9a;
-      --glass: rgba(255,255,255,0.03);
-      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
-    }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html, body { height: 100%; background: linear-gradient(180deg,#06080a 0%, #071018 60%); color: #e6f0f6; line-height: 1.5; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
-
-    a { text-decoration: none; color: inherit; }
-
-    .wrap { max-width: 1100px; margin: 0 auto; padding: 28px; }
-
-    /* Header */
-    header { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; flex-wrap: wrap; }
-    .logo { display: flex; align-items: center; gap: 12px; }
-    .logo svg { width: 48px; height: 48px; }
-    .brand { font-weight: 800; letter-spacing: 0.6px; }
-    .brand .si { color: var(--accent); font-weight: 900; }
-    nav { display: flex; gap: 18px; flex-wrap: wrap; }
-    nav a { font-weight: 600; color: var(--muted); transition: color 0.2s; }
-    nav a:hover { color: var(--accent); }
-
-    /* Hero */
-    .hero { display: grid; grid-template-columns: 1fr; gap: 24px; margin: 48px 0; align-items: center; }
-    .hero .title { font-size: 34px; font-weight: 800; margin-bottom: 8px; }
-    .hero p { color: var(--muted); }
-    .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 18px; }
-
-    .btn { padding: 12px 18px; border-radius: 10px; border: 0; cursor: pointer; font-weight: 700; }
-    .btn-primary { background: var(--accent); color: #001; transition: transform 0.2s; }
-    .btn-primary:hover { transform: scale(1.05); }
-
-    .btn-ebook { display: inline-block; padding: 14px 28px; border-radius: 12px; background: linear-gradient(90deg, #00d0ff, #0077ff); color: #fff; font-weight: 800; font-size: 18px; text-align: center; box-shadow: 0 6px 20px rgba(0,0,0,0.6); transition: all 0.25s ease-in-out; }
-    .btn-ebook:hover { transform: scale(1.08); box-shadow: 0 10px 25px rgba(0,0,0,0.8); background: linear-gradient(90deg, #38caff, #005ce6); }
-
-    /* Cards */
-    .cards { display: grid; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); gap: 16px; margin-top: 24px; }
-    .card { background: var(--card); padding: 18px; border-radius: 14px; box-shadow: 0 6px 20px rgba(0,0,0,0.6); transition: transform 0.2s; }
-    .card:hover { transform: translateY(-5px); }
-    .small { font-size: 13px; color: var(--muted); }
-
-    section { margin: 44px 0; }
-    h2 { font-size: 20px; margin-bottom: 12px; }
-
-    .contact a { display: inline-block; padding: 10px 14px; border-radius: 12px; background: linear-gradient(90deg, var(--accent), var(--accent-2)); color: #001019; font-weight: 800; }
-
-    footer { padding: 30px 0; text-align: center; color: var(--muted); font-size: 13px; }
-
-    @media(min-width:860px) { 
-      .hero { grid-template-columns: 1fr 380px; }
-      .hero .title { font-size: 42px; }
-    }
-  </style>
-</head>
-<body>
-  <div class="wrap">
-    <!-- Header -->
-    <header>
-      <div class="logo">
-        <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <rect width="64" height="64" rx="12" fill="transparent"/>
-          <g transform="translate(8,8)">
-            <text x="0" y="28" font-family="Inter, Arial" font-size="28" font-weight="800" fill="#9fbfd8">A</text>
-            <text x="18" y="28" font-family="Inter, Arial" font-size="28" font-weight="900" fill="#00d0ff">Si</text>
-          </g>
-        </svg>
-        <div>
-          <div class="brand">Si-<span class="si">Axis</span></div>
-          <div class="small">Tecnologia • Inteligência Artificial</div>
-        </div>
-      </div>
-
-      <nav>
-        <a href="#home">Home</a>
-        <a href="#sobre">Sobre</a>
-        <a href="#projetos">Projetos</a>
-        <a href="#contato">Contato</a>
-      </nav>
-    </header>
-
-    <main>
-      <!-- Hero -->
-      <section id="home" class="hero">
-        <div>
-          <h1 class="title">Onde tecnologia encontra aprendizado</h1>
-          <p>Conteúdos práticos sobre hardware, desempenho de PCs e inteligência artificial, em linguagem acessível para iniciantes.</p>
-          <div class="hero-actions">
-            <button class="btn btn-primary" onclick="document.location.hash='#projetos'">Conhecer o projeto</button>
-            <a href="https://go.hotmart.com/O101872807C" target="_blank" class="btn-ebook">Comprar e-book</a>
-          </div>
-
-          <div class="cards" aria-hidden="true">
-            <div class="card">
-              <div class="small">E-book</div>
-              <strong>Era da Computação</strong>
-              <p class="small">Resumo prático e aplicações.</p>
-            </div>
-            <div class="card">
-              <div class="small">Tutoriais</div>
-              <strong>Montagem & Manutenção</strong>
-              <p class="small">Guia passo a passo para iniciantes.</p>
-            </div>
-            <div class="card">
-              <div class="small">Cursos</div>
-              <strong>IA aplicada</strong>
-              <p class="small">Conteúdos futuros planejados.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Sobre -->
-      <section id="sobre">
-        <h2>Sobre</h2>
-        <p class="small">A Si-Axis nasceu do interesse por hardware, desempenho e didática: explicamos o porquê das coisas e mostramos como montar soluções práticas com baixo custo. Conteúdo pensado para quem quer aprender fazendo.</p>
-      </section>
-
-      <!-- Projetos -->
-      <section id="projetos">
-        <h2>Projetos</h2>
-        <div class="cards">
-          <div class="card">
-            <strong>Era da Computação — e-book</strong>
-            <p class="small">Resumo, divulgação e link para compra.</p>
-          </div>
-          <div class="card">
-            <strong>Guias & Tutoriais</strong>
-            <p class="small">Manutenção, otimização, montagem.</p>
-          </div>
-          <div class="card">
-            <strong>Fórum</strong>
-            <p class="small">Comunidade para trocar conhecimento.</p>
-          </div>
-        </div>
-      </section>
-
-      <!-- Contato -->
-      <section id="contato" class="contact">
-        <h2>Contato</h2>
-        <p class="small">Fale direto pelo WhatsApp clicando no botão abaixo:</p>
-        <a href="https://wa.me/5511949354732" target="_blank" rel="noopener">Abrir WhatsApp</a>
-      </section>
-    </main>
-<!-- YouTube -->
-<section id="youtube">
-  <h2>Nosso Canal no YouTube</h2>
-  <p class="small">Confira vídeos exclusivos sobre tecnologia, manutenção de PCs e inteligência artificial.</p>
-  <a href="https://www.youtube.com/@Si-Axis" target="_blank" class="btn-youtube">
-    <span style="margin-right:8px;">&#9658;</span> YouTube
-  </a>
-</section>
-
 <style>
+  :root {
+    --bg: #0b0f14;
+    --card: #0f1720;
+    --muted: #9aa6b2;
+    --accent: #00d0ff;
+    --accent-2: #38ff9a;
+    --glass: rgba(255,255,255,0.03);
+    font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; background: linear-gradient(180deg,#06080a 0%, #071018 60%); color: #e6f0f6; line-height: 1.5; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+  a { text-decoration: none; color: inherit; }
+  .wrap { max-width: 1100px; margin: 0 auto; padding: 28px; }
+
+  /* Header */
+  header { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; flex-wrap: wrap; }
+  .logo { display: flex; align-items: center; gap: 12px; }
+
+  /* Logo maior e animado */
+  .logo svg { 
+    width: 80px; 
+    height: 80px; 
+    transition: transform 0.3s ease, width 0.3s ease, height 0.3s ease; 
+    animation: floatLogo 3s ease-in-out infinite alternate;
+  }
+
+  @media(min-width:860px) {
+    .logo svg { 
+      width: 100px; 
+      height: 100px; 
+    }
+  }
+
+  @keyframes floatLogo {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+    100% { transform: translateY(0); }
+  }
+
+  .logo:hover svg {
+    transform: scale(1.1) translateY(-3px);
+  }
+
+  .logo .brand { font-weight: 800; letter-spacing: 0.6px; }
+  .logo .brand .si { color: var(--accent); font-weight: 900; }
+  nav { display: flex; gap: 18px; flex-wrap: wrap; }
+  nav a { font-weight: 600; color: var(--muted); transition: color 0.2s; }
+  nav a:hover { color: var(--accent); }
+
+  /* Hero */
+  .hero { display: grid; grid-template-columns: 1fr; gap: 24px; margin: 48px 0; align-items: center; }
+  .hero .title { font-size: 34px; font-weight: 800; margin-bottom: 8px; }
+  .hero p { color: var(--muted); }
+  .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 18px; }
+
+  .btn { padding: 12px 18px; border-radius: 10px; border: 0; cursor: pointer; font-weight: 700; }
+  .btn-primary { background: var(--accent); color: #001; transition: transform 0.2s; }
+  .btn-primary:hover { transform: scale(1.05); }
+
+  .btn-ebook { display: inline-block; padding: 14px 28px; border-radius: 12px; background: linear-gradient(90deg, #00d0ff, #0077ff); color: #fff; font-weight: 800; font-size: 18px; text-align: center; box-shadow: 0 6px 20px rgba(0,0,0,0.6); transition: all 0.25s ease-in-out; }
+  .btn-ebook:hover { transform: scale(1.08); box-shadow: 0 10px 25px rgba(0,0,0,0.8); background: linear-gradient(90deg, #38caff, #005ce6); }
+
+  /* Cards */
+  .cards { display: grid; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); gap: 16px; margin-top: 24px; }
+  .card { background: var(--card); padding: 18px; border-radius: 14px; box-shadow: 0 6px 20px rgba(0,0,0,0.6); transition: transform 0.2s; }
+  .card:hover { transform: translateY(-5px); }
+  .small { font-size: 13px; color: var(--muted); }
+
+  section { margin: 44px 0; }
+  h2 { font-size: 20px; margin-bottom: 12px; }
+
+  .contact a { display: inline-block; padding: 10px 14px; border-radius: 12px; background: linear-gradient(90deg, var(--accent), var(--accent-2)); color: #001019; font-weight: 800; }
+
+  footer { padding: 30px 0; text-align: center; color: var(--muted); font-size: 13px; }
+
+  @media(min-width:860px) { 
+    .hero { grid-template-columns: 1fr 380px; }
+    .hero .title { font-size: 42px; }
+  }
+
+  /* YouTube Button */
   .btn-youtube {
     display: inline-block;
     padding: 14px 28px;
@@ -191,12 +98,3 @@
     box-shadow: 0 0 20px #ff0000, 0 0 40px #ff4c4c, 0 0 60px #ff0000;
   }
 </style>
-
-
-
-      © Si-Axis — Foco em aprendizado prático e tecnologia.
-    </footer>
-  </div>
-</body>
-</html>
-
