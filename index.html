@@ -199,30 +199,4 @@
   </div>
 </body>
 </html>
-/* Logo maior e animação */
-.logo svg { 
-  width: 80px; 
-  height: 80px; 
-  transition: transform 0.3s ease, width 0.3s ease, height 0.3s ease; 
-  animation: floatLogo 3s ease-in-out infinite alternate;
-}
-
-@media(min-width:860px) {
-  .logo svg { 
-    width: 100px; 
-    height: 100px; 
-  }
-}
-
-/* Animação suave de movimento vertical */
-@keyframes floatLogo {
-  0% { transform: translateY(0); }
-  50% { transform: translateY(-6px); }
-  100% { transform: translateY(0); }
-}
-
-/* Animação ao passar o mouse */
-.logo:hover svg {
-  transform: scale(1.1) translateY(-3px);
-}
 
