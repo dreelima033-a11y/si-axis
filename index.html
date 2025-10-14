@@ -170,11 +170,56 @@
             <a href="https://go.hotmart.com/O101872807C" target="_blank" class="btn-ebook">Comprar e-book A Nova Era da Computação</a>
           </div>
 
-          <div class="cards" aria-hidden="true">
-            <div class="card">
-              <div class="small">E-book</div>
-              <strong>Era da Computação</strong>
-              <p class="small">Resumo prático e aplicações.</p>
+        <!-- Card do E-book -->
+<div class="card">
+  <div class="small">E-book</div>
+  <strong>Era da Computação</strong>
+  <p class="small">Resumo prático e aplicações.</p>
+  
+  <!-- Botão Accordion -->
+  <button class="btn-saiba-mais">Saiba mais</button>
+  
+  <!-- Resumo expandido -->
+  <div class="resumo" style="display:none; margin-top:10px; padding:10px; border:1px solid #ccc;">
+    Este e-book apresenta a Era da Computação de forma prática, abordando desde conceitos básicos até aplicações modernas. Ideal para quem quer entender a evolução da tecnologia e como ela impacta nosso dia a dia.
+    <br><br>
+    <button class="btn-modal">Ver detalhes</button>
+  </div>
+</div>
+
+<!-- Modal -->
+<div id="modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7);">
+  <div class="modal-conteudo" style="background:#fff; margin:10% auto; padding:20px; width:90%; max-width:500px; position:relative;">
+    <span class="fechar" style="position:absolute; top:10px; right:15px; cursor:pointer; font-size:20px;">&times;</span>
+    <h2>Era da Computação</h2>
+    <p>
+      O e-book ‘Era da Computação’ explora a história da computação desde os primeiros computadores até a tecnologia atual. Ele traz exemplos práticos de aplicação em diferentes áreas, discute tendências futuras e oferece exercícios de reflexão para consolidar o aprendizado. Com uma linguagem simples e direta, é perfeito para estudantes, profissionais de TI e entusiastas que desejam compreender a evolução tecnológica de forma clara e objetiva.
+    </p>
+  </div>
+</div>
+
+<script>
+  // Accordion
+  document.querySelectorAll('.btn-saiba-mais').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const resumo = btn.nextElementSibling;
+      resumo.style.display = resumo.style.display === 'none' ? 'block' : 'none';
+    });
+  });
+
+  // Modal
+  const modal = document.getElementById('modal');
+  document.querySelectorAll('.btn-modal').forEach(btn => {
+    btn.addEventListener('click', () => { modal.style.display = 'block'; });
+  });
+  document.querySelector('.fechar').addEventListener('click', () => { modal.style.display = 'none'; });
+
+  // Fechar modal clicando fora
+  window.addEventListener('click', (e) => {
+    if (e.target == modal) modal.style.display = 'none';
+  });
+</script>
+
             </div>
             <div class="card">
               <div class="small">Tutoriais</div>
