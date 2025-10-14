@@ -6,152 +6,27 @@
   <title>Si-Axis — Tecnologia e Aprendizado Prático</title>
   <meta name="description" content="Si-Axis oferece conteúdos práticos sobre hardware, desempenho e inteligência artificial para iniciantes e entusiastas.">
 
-  <!-- Open Graph -->
   <meta property="og:title" content="Si-Axis — Tecnologia & IA">
   <meta property="og:description" content="Aprenda sobre hardware, desempenho de PCs e inteligência artificial de forma prática e acessível.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://dreelima033-a11y.github.io/si-axis/">
 
-  <!-- Fonte -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
 
-  <style>
-    :root {
-      --bg: #0b0f14;
-      --card: #0f1720;
-      --muted: #9aa6b2;
-      --accent: #00d0ff;
-      --accent-2: #38ff9a;
-      --glass: rgba(255,255,255,0.03);
-      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
-    }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html, body { height: 100%; background: linear-gradient(180deg,#06080a 0%, #071018 60%); color: #e6f0f6; line-height: 1.5; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
-    a { text-decoration: none; color: inherit; }
-
-    .wrap { max-width: 1100px; margin: 0 auto; padding: 28px; }
-
-    /* Header flexível e responsivo */
-    header {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      align-items: center;
-      padding: 10px 20px;
-    }
-
-    /* Logo animado */
-    .logo-animated svg {
-      width: 220px;
-      max-width: 100%;
-      height: auto;
-    }
-
-    .si, .axis {
-      opacity: 0;
-      transform: translateY(-10px);
-      transition: all 0.6s ease;
-    }
-
-    .si.show { opacity: 1; transform: translateY(0); animation: glow 2s infinite alternate; }
-    .axis.show { opacity: 1; transform: translateY(0); animation: glow 2s infinite alternate 0.8s; }
-
-    @keyframes glow {
-      0% { fill-opacity: 0.7; filter: drop-shadow(0 0 6px currentColor); }
-      50% { fill-opacity: 1; filter: drop-shadow(0 0 12px currentColor); }
-      100% { fill-opacity: 0.8; filter: drop-shadow(0 0 6px currentColor); }
-    }
-
-    .logo-animated .small {
-      font-size: 14px;
-      color: #9aa6b2;
-      margin-top: 4px;
-    }
-
-    /* Nav */
-    nav {
-      display: flex;
-      gap: 18px;
-      flex-wrap: wrap;
-      margin-top: 10px;
-    }
-
-    nav a {
-      font-weight: 600;
-      color: #9aa6b2;
-      transition: color 0.2s;
-    }
-    nav a:hover { color: var(--accent); }
-
-    /* Hero */
-    .hero { display: grid; grid-template-columns: 1fr; gap: 24px; margin: 48px 0; align-items: center; }
-    .hero .title { font-size: 34px; font-weight: 800; margin-bottom: 8px; }
-    .hero p { color: var(--muted); }
-    .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 18px; }
-
-    .btn { padding: 12px 18px; border-radius: 10px; border: 0; cursor: pointer; font-weight: 700; }
-    .btn-primary { background: var(--accent); color: #001; transition: transform 0.2s; }
-    .btn-primary:hover { transform: scale(1.05); }
-
-    .btn-ebook { display: inline-block; padding: 14px 28px; border-radius: 12px; background: linear-gradient(90deg, #00d0ff, #0077ff); color: #fff; font-weight: 800; font-size: 18px; text-align: center; box-shadow: 0 6px 20px rgba(0,0,0,0.6); transition: all 0.25s ease-in-out; }
-    .btn-ebook:hover { transform: scale(1.08); box-shadow: 0 10px 25px rgba(0,0,0,0.8); background: linear-gradient(90deg, #38caff, #005ce6); }
-
-    /* Cards */
-    .cards { display: grid; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); gap: 16px; margin-top: 24px; }
-    .card { background: var(--card); padding: 18px; border-radius: 14px; box-shadow: 0 6px 20px rgba(0,0,0,0.6); transition: transform 0.2s; }
-    .card:hover { transform: translateY(-5px); }
-    .small { font-size: 13px; color: var(--muted); }
-
-    section { margin: 44px 0; }
-    h2 { font-size: 20px; margin-bottom: 12px; }
-
-    .contact a { display: inline-block; padding: 10px 14px; border-radius: 12px; background: linear-gradient(90deg, var(--accent), var(--accent-2)); color: #001019; font-weight: 800; }
-
-    footer { padding: 30px 0; text-align: center; color: var(--muted); font-size: 13px; }
-
-    /* YouTube */
-    .btn-youtube {
-      display: inline-block;
-      padding: 14px 28px;
-      border-radius: 12px;
-      background: linear-gradient(90deg, #ff0000, #ff4c4c);
-      color: #fff;
-      font-weight: 800;
-      font-size: 18px;
-      text-align: center;
-      box-shadow: 0 0 10px #ff0000, 0 0 20px #ff4c4c, 0 0 30px #ff0000;
-      transition: all 0.3s ease-in-out;
-    }
-    .btn-youtube:hover {
-      transform: scale(1.08);
-      box-shadow: 0 0 20px #ff0000, 0 0 40px #ff4c4c, 0 0 60px #ff0000;
-    }
-
-    /* Responsividade do header */
-    @media(min-width:860px) {
-      header { flex-wrap: nowrap; }
-      nav { margin-top: 0; }
-    }
-
-    @media(min-width:1024px) {
-      .hero .title { font-size: 42px; }
-    }
-  </style>
+  <link rel="stylesheet" href="styles.css"> 
 </head>
 <body>
   <div class="wrap">
-    <!-- Header com logo animado Si-Axis -->
     <header>
       <div class="logo-animated">
         <svg viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg">
-          <text class="si" x="0" y="40" font-family="Inter, Arial" font-size="40" font-weight="900" fill="#00d0ff">Si</text>
-          <text class="axis" x="60" y="40" font-family="Inter, Arial" font-size="42" font-weight="900" fill="#38ff9a">-Axis</text>
+          <text id="logo-si" x="0" y="40" font-family="Inter, Arial" font-size="40" font-weight="900" fill="#00d0ff">Si</text>
+          <text id="logo-axis" x="60" y="40" font-family="Inter, Arial" font-size="42" font-weight="900" fill="#38ff9a">-Axis</text>
         </svg>
         <div class="small">Tecnologia • Inteligência Artificial</div>
       </div>
 
-      <nav>
+      <nav aria-label="Navegação Principal">
         <a href="#home">Home</a>
         <a href="#sobre">Sobre</a>
         <a href="#projetos">Projetos</a>
@@ -160,93 +35,45 @@
     </header>
 
     <main>
-      <!-- Hero -->
       <section id="home" class="hero">
         <div>
           <h1 class="title">Onde tecnologia encontra aprendizado</h1>
           <p>Conteúdos práticos sobre hardware, desempenho de PCs e inteligência artificial, em linguagem acessível para iniciantes.</p>
           <div class="hero-actions">
-            <button class="btn btn-primary" onclick="document.location.hash='#projetos'">Conhecer o projeto</button>
-            <a href="https://go.hotmart.com/O101872807C" target="_blank" class="btn-ebook">Comprar e-book </a>
+            <button id="btn-conhecer" class="btn btn-primary">Conhecer o projeto</button>
+            <a href="https://go.hotmart.com/O101872807C" target="_blank" class="btn-ebook" rel="noopener noreferrer">Comprar e-book</a>
           </div>
+        </div>
 
-        <!-- Card do E-book -->
-<div class="card">
-  <div class="small">E-book</div>
-  <strong>Era da Computação</strong>
-  <p class="small">Resumo prático e aplicações.</p>
-  
-  <!-- Botão Accordion -->
-  <button class="btn-saiba-mais">Saiba mais</button>
-  
-  <!-- Resumo expandido -->
-  <div class="resumo" style="display:none; margin-top:10px; padding:10px; border:1px solid #ccc;">
-    Este e-book apresenta a Era da Computação de forma prática, abordando desde conceitos básicos até aplicações modernas. Ideal para quem quer entender a evolução da tecnologia e como ela impacta nosso dia a dia.
-    <br><br>
-    <button class="btn-modal">Ver detalhes</button>
-  </div>
-</div>
-
-<!-- Modal -->
-<div id="modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7);">
-  <div class="modal-conteudo" style="background:#fff; margin:10% auto; padding:20px; width:90%; max-width:500px; position:relative;">
-    <span class="fechar" style="position:absolute; top:10px; right:15px; cursor:pointer; font-size:20px;">&times;</span>
-    <h2>Era da Computação</h2>
-    <p>
-      O e-book ‘Era da Computação’ explora a história da computação desde os primeiros computadores até a tecnologia atual. Ele traz exemplos práticos de aplicação em diferentes áreas, discute tendências futuras e oferece exercícios de reflexão para consolidar o aprendizado. Com uma linguagem simples e direta, é perfeito para estudantes, profissionais de TI e entusiastas que desejam compreender a evolução tecnológica de forma clara e objetiva.
-    </p>
-  </div>
-</div>
-
-<script>
-  // Accordion
-  document.querySelectorAll('.btn-saiba-mais').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const resumo = btn.nextElementSibling;
-      resumo.style.display = resumo.style.display === 'none' ? 'block' : 'none';
-    });
-  });
-
-  // Modal
-  const modal = document.getElementById('modal');
-  document.querySelectorAll('.btn-modal').forEach(btn => {
-    btn.addEventListener('click', () => { modal.style.display = 'block'; });
-  });
-  document.querySelector('.fechar').addEventListener('click', () => { modal.style.display = 'none'; });
-
-  // Fechar modal clicando fora
-  window.addEventListener('click', (e) => {
-    if (e.target == modal) modal.style.display = 'none';
-  });
-</script>
-
-            </div>
-            <div class="card">
-              <div class="small">Tutoriais</div>
-              <strong>Montagem & Manutenção</strong>
-              <p class="small">Guia passo a passo para iniciantes.</p>
-            </div>
-            <div class="card">
-              <div class="small">Cursos</div>
-              <strong>IA aplicada</strong>
-              <p class="small">Conteúdos futuros planejados.</p>
-            </div>
+        <div class="cards">
+          <div class="card card-interactive" data-target="ebook-modal">
+            <div class="small">E-book</div>
+            <strong>Era da Computação</strong>
+            <p class="small">Resumo prático e aplicações.</p>
+            <button class="btn-action">Saiba mais</button>
+          </div>
+          
+          <div class="card">
+            <div class="small">Tutoriais</div>
+            <strong>Montagem & Manutenção</strong>
+            <p class="small">Guia passo a passo para iniciantes.</p>
+          </div>
+          <div class="card">
+            <div class="small">Cursos</div>
+            <strong>IA aplicada</strong>
+            <p class="small">Conteúdos futuros planejados.</p>
           </div>
         </div>
       </section>
 
-      <!-- Sobre -->
       <section id="sobre">
         <h2>Sobre</h2>
         <p class="small">"Na Si-Axis, simplificamos tecnologia com responsabilidade: hardware, desempenho de PCs e IA explicados de forma prática para quem deseja aprender, criar e contribuir para um futuro mais sustentável."</p>
       </section>
 
-      <!-- Projetos -->
       <section id="projetos">
         <h2>Projetos</h2>
         <div class="cards">
-          <d
-          </div>
           <div class="card">
             <strong>Guias & Tutoriais</strong>
             <p class="small">Manutenção, otimização, montagem.</p>
@@ -258,18 +85,16 @@
         </div>
       </section>
 
-      <!-- Contato -->
       <section id="contato" class="contact">
         <h2>Contato</h2>
         <p class="small">Fale direto pelo WhatsApp clicando no botão abaixo:</p>
-        <a href="https://wa.me/5511949354732" target="_blank" rel="noopener">Abrir WhatsApp</a>
+        <a href="https://wa.me/5511949354732" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp">Abrir WhatsApp</a>
       </section>
 
-      <!-- YouTube -->
       <section id="youtube">
         <h2> Nosso Canal no YouTube</h2>  
-        <a href="https://www.youtube.com/@Si-Axis" target="_blank" class="btn-youtube">
-          <span style="margin-right:5px;">&#9658;</span> YouTube
+        <a href="https://www.youtube.com/@Si-Axis" target="_blank" class="btn-youtube" rel="noopener noreferrer">
+          <span aria-hidden="true">&#9658;</span> YouTube
         </a>
       </section>
     </main>
@@ -279,14 +104,238 @@
     </footer>
   </div>
 
-  <script>
-    window.addEventListener("DOMContentLoaded", () => {
-      const si = document.querySelector(".si");
-      const axis = document.querySelector(".axis");
+  <div id="ebook-modal" class="modal" aria-modal="true" role="dialog" aria-labelledby="modal-title" style="display:none;">
+    <div class="modal-conteudo">
+      <button class="fechar" aria-label="Fechar Modal">&times;</button>
+      <h2 id="modal-title">Era da Computação</h2>
+      <p>
+        O e-book ‘Era da Computação’ explora a história da computação desde os primeiros computadores até a tecnologia atual. Ele traz exemplos práticos de aplicação em diferentes áreas, discute tendências futuras e oferece exercícios de reflexão para consolidar o aprendizado. Com uma linguagem simples e direta, é perfeito para estudantes, profissionais de TI e entusiastas que desejam compreender a evolução tecnológica de forma clara e objetiva.
+      </p>
+    </div>
+  </div>
 
-      setTimeout(() => si.classList.add("show"), 500);
-      setTimeout(() => axis.classList.add("show"), 1300);
-    });
-  </script>
+  <script src="main.js" defer></script> 
 </body>
 </html>
+:root {
+  --bg: #0b0f14;
+  --card: #0f1720;
+  --muted: #9aa6b2;
+  --accent: #00d0ff;
+  --accent-2: #38ff9a;
+  --glass: rgba(255,255,255,0.03);
+  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { 
+  height: 100%; 
+  background: linear-gradient(180deg,#06080a 0%, #071018 60%); 
+  color: #e6f0f6; 
+  line-height: 1.5; 
+  -webkit-font-smoothing: antialiased; 
+  -moz-osx-font-smoothing: grayscale; 
+}
+a { text-decoration: none; color: inherit; }
+
+.wrap { max-width: 1100px; margin: 0 auto; padding: 28px; }
+
+/* Header flexível e responsivo */
+header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+}
+
+/* Logo animado */
+.logo-animated svg {
+  width: 220px;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Estilos de animação controlados pelo JS */
+#logo-si, #logo-axis {
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: all 0.6s ease;
+}
+
+#logo-si.show { opacity: 1; transform: translateY(0); animation: glow 2s infinite alternate; }
+#logo-axis.show { opacity: 1; transform: translateY(0); animation: glow 2s infinite alternate 0.8s; }
+
+@keyframes glow {
+  0% { fill-opacity: 0.7; filter: drop-shadow(0 0 6px currentColor); }
+  50% { fill-opacity: 1; filter: drop-shadow(0 0 12px currentColor); }
+  100% { fill-opacity: 0.8; filter: drop-shadow(0 0 6px currentColor); }
+}
+
+.logo-animated .small {
+  font-size: 14px;
+  color: #9aa6b2;
+  margin-top: 4px;
+}
+
+/* Nav */
+nav {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+nav a {
+  font-weight: 600;
+  color: #9aa6b2;
+  transition: color 0.2s;
+}
+nav a:hover { color: var(--accent); }
+
+/* Hero */
+.hero { display: grid; grid-template-columns: 1fr; gap: 24px; margin: 48px 0; align-items: center; }
+.hero .title { font-size: 34px; font-weight: 800; margin-bottom: 8px; }
+.hero p { color: var(--muted); }
+.hero-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 18px; }
+
+.btn { padding: 12px 18px; border-radius: 10px; border: 0; cursor: pointer; font-weight: 700; }
+.btn-primary { background: var(--accent); color: #001; transition: transform 0.2s; }
+.btn-primary:hover { transform: scale(1.05); }
+
+.btn-ebook { display: inline-block; padding: 14px 28px; border-radius: 12px; background: linear-gradient(90deg, #00d0ff, #0077ff); color: #fff; font-weight: 800; font-size: 18px; text-align: center; box-shadow: 0 6px 20px rgba(0,0,0,0.6); transition: all 0.25s ease-in-out; }
+.btn-ebook:hover { transform: scale(1.08); box-shadow: 0 10px 25px rgba(0,0,0,0.8); background: linear-gradient(90deg, #38caff, #005ce6); }
+
+/* Cards */
+.cards { display: grid; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); gap: 16px; margin-top: 24px; }
+.card { background: var(--card); padding: 18px; border-radius: 14px; box-shadow: 0 6px 20px rgba(0,0,0,0.6); transition: transform 0.2s; }
+.card:hover { transform: translateY(-5px); }
+
+/* Estilo para o botão 'Saiba mais' dentro do card */
+.card .btn-action { 
+    margin-top: 10px;
+    padding: 8px 14px;
+    background: var(--glass);
+    border: 1px solid var(--muted);
+    color: var(--accent);
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.2s, color 0.2s;
+}
+.card .btn-action:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.small { font-size: 13px; color: var(--muted); }
+
+section { margin: 44px 0; }
+h2 { font-size: 20px; margin-bottom: 12px; }
+
+/* Botão de WhatsApp Dedicado */
+.btn-whatsapp {
+    background: linear-gradient(90deg, #25D366, #128C7E);
+    color: #fff !important; 
+    padding: 12px 18px; 
+    border-radius: 10px; 
+    font-weight: 700;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.btn-whatsapp:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+}
+
+footer { padding: 30px 0; text-align: center; color: var(--muted); font-size: 13px; }
+
+/* YouTube */
+.btn-youtube {
+  display: inline-block;
+  padding: 14px 28px;
+  border-radius: 12px;
+  background: linear-gradient(90deg, #ff0000, #ff4c4c);
+  color: #fff;
+  font-weight: 800;
+  font-size: 18px;
+  text-align: center;
+  box-shadow: 0 0 10px #ff0000, 0 0 20px #ff4c4c, 0 0 30px #ff0000;
+  transition: all 0.3s ease-in-out;
+}
+.btn-youtube:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 20px #ff0000, 0 0 40px #ff4c4c, 0 0 60px #ff0000;
+}
+
+/* Modal Estilo Profissional (Centralização Flexbox + Transições) */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85); /* Fundo escuro mais forte */
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    backdrop-filter: blur(5px); /* Efeito tecnológico */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+/* Classe de abertura controlada pelo JS */
+.modal.is-open {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-conteudo {
+    background: var(--card);
+    color: #e6f0f6;
+    padding: 30px;
+    border-radius: 16px;
+    width: 90%;
+    max-width: 550px;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    transform: translateY(20px);
+    transition: transform 0.3s ease;
+}
+
+.modal.is-open .modal-conteudo {
+    transform: translateY(0);
+}
+
+.modal-conteudo h2 {
+    margin-top: 0;
+    color: var(--accent);
+}
+
+.fechar {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    cursor: pointer;
+    font-size: 24px;
+    background: none;
+    border: none;
+    color: var(--muted);
+    transition: color 0.2s;
+}
+
+.fechar:hover {
+    color: #fff;
+}
+
+/* Responsividade do header */
+@media(min-width:860px) {
+  header { flex-wrap: nowrap; }
+  nav { margin-top: 0; }
+}
+
+@media(min-width:1024px) {
+  .hero .title { font-size: 42px; }
+}
