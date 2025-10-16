@@ -6,12 +6,6 @@
   <title>Si-Axis — Tecnologia e Aprendizado Prático</title>
   <meta name="description" content="Si-Axis oferece conteúdos práticos sobre hardware, desempenho e inteligência artificial para iniciantes e entusiastas.">
 
-  <!-- Open Graph -->
-  <meta property="og:title" content="Si-Axis — Tecnologia & IA">
-  <meta property="og:description" content="Aprenda sobre hardware, desempenho de PCs e inteligência artificial de forma prática e acessível.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://dreelima033-a11y.github.io/si-axis/">
-
   <!-- Fonte -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
 
@@ -22,15 +16,14 @@
       --muted: #9aa6b2;
       --accent: #00d0ff;
       --accent-2: #38ff9a;
-      --glass: rgba(255,255,255,0.03);
       font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    html, body { height: 100%; background: linear-gradient(180deg,#06080a 0%, #071018 60%); color: #e6f0f6; line-height: 1.5; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; overflow-x: hidden; }
+    html, body { height: 100%; background: var(--bg); color: #e6f0f6; line-height: 1.5; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; overflow-x: hidden; }
     a { text-decoration: none; color: inherit; }
 
-    .wrap { max-width: 1100px; margin: 0 auto; padding: 28px; }
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 28px; position: relative; }
 
     /* Header */
     header {
@@ -43,49 +36,30 @@
       z-index: 2;
     }
 
-    .logo-animated svg {
-      width: 220px;
-      max-width: 100%;
-      height: auto;
-    }
-
-    .si, .axis {
-      opacity: 0;
-      transform: translateY(-10px);
-      transition: all 0.6s ease;
-    }
-
+    .logo-animated svg { width: 220px; max-width: 100%; height: auto; }
+    .si, .axis { opacity: 0; transform: translateY(-10px); transition: all 0.6s ease; }
     .si.show { opacity: 1; transform: translateY(0); animation: glow 2s infinite alternate; }
     .axis.show { opacity: 1; transform: translateY(0); animation: glow 2s infinite alternate 0.8s; }
-
     @keyframes glow {
       0% { fill-opacity: 0.7; filter: drop-shadow(0 0 6px currentColor); }
       50% { fill-opacity: 1; filter: drop-shadow(0 0 12px currentColor); }
       100% { fill-opacity: 0.8; filter: drop-shadow(0 0 6px currentColor); }
     }
+    .logo-animated .small { font-size: 14px; color: #9aa6b2; margin-top: 4px; }
 
-    .logo-animated .small {
-      font-size: 14px;
-      color: #9aa6b2;
-      margin-top: 4px;
-    }
-
-    nav {
-      display: flex;
-      gap: 18px;
-      flex-wrap: wrap;
-      margin-top: 10px;
-    }
-
-    nav a {
-      font-weight: 600;
-      color: #9aa6b2;
-      transition: color 0.2s;
-    }
+    nav { display: flex; gap: 18px; flex-wrap: wrap; margin-top: 10px; }
+    nav a { font-weight: 600; color: #9aa6b2; transition: color 0.2s; }
     nav a:hover { color: var(--accent); }
 
     /* Hero */
-    .hero { display: grid; grid-template-columns: 1fr; gap: 24px; margin: 48px 0; align-items: center; position: relative; overflow: hidden; min-height: 500px; }
+    .hero { position: relative; display: grid; grid-template-columns: 1fr; gap: 24px; margin: 48px 0; align-items: center; min-height: 500px; overflow: hidden; }
+    .hero-bg {
+      position:absolute; top:0; left:0; width:100%; height:100%;
+      background:url('https://images.unsplash.com/photo-1616587892085-3b85d42066ef?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MjA3fDB8MXxzZWFyY2h8MXx8Y2lyY3VpdCUyMGNpcmN1aXR8ZW58MHx8fHwxNjkwMzU2OTQ5&ixlib=rb-4.0.3&q=80&w=1080') no-repeat center center/cover;
+      z-index:0;
+    }
+    .hero-content { position:relative; z-index:1; }
+
     .hero .title { font-size: 34px; font-weight: 800; margin-bottom: 8px; }
     .hero p { color: var(--muted); }
     .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 18px; }
@@ -109,7 +83,7 @@
     section { margin: 44px 0; }
     h2 { font-size: 24px; margin-bottom: 12px; }
 
-    /* Botão WhatsApp com efeito mágico */
+    /* Botão WhatsApp */
     .contact a {
       display: inline-block;
       padding: 12px 20px;
@@ -122,53 +96,25 @@
       background: linear-gradient(90deg, var(--accent), var(--accent-2));
       color: #001019;
     }
+    .contact a:hover { transform: scale(1.1) rotate(-2deg); box-shadow: 0 6px 20px rgba(0,208,255,0.6), 0 0 10px rgba(56,255,154,0.4); }
 
-    .contact a:hover {
-      transform: scale(1.1) rotate(-2deg);
-      box-shadow: 0 6px 20px rgba(0,208,255,0.6), 0 0 10px rgba(56,255,154,0.4);
-    }
-
-    /* Modal suave */
+    /* Modal */
     #modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 10; opacity: 0; transition: opacity 0.3s ease; }
     #modal.show { display: block; opacity: 1; }
     .modal-conteudo { background:#fff; margin:10% auto; padding:20px; width:90%; max-width:500px; position:relative; border-radius:12px; color:#001; transform: translateY(-20px); transition: transform 0.3s ease; }
     #modal.show .modal-conteudo { transform: translateY(0); }
     .fechar { position:absolute; top:10px; right:15px; cursor:pointer; font-size:20px; }
 
-    /* Responsividade */
-    @media(min-width:860px) { header { flex-wrap: nowrap; } nav { margin-top: 0; } }
-    @media(min-width:1024px) { .hero .title { font-size: 42px; } }
+    /* Partículas */
+    .particle { position:absolute; width:4px; height:4px; background: rgba(0,208,255,0.7); border-radius:50%; pointer-events:none; animation: float 6s linear infinite; }
+    @keyframes float { 0%{transform:translateY(0) translateX(0);opacity:1}50%{transform:translateY(-30px) translateX(20px);opacity:0.5}100%{transform:translateY(0) translateX(0);opacity:1} }
 
-    /* Hero partículas */
-    .particle {
-      position: absolute;
-      width: 4px;
-      height: 4px;
-      background: rgba(0, 208, 255, 0.7);
-      border-radius: 50%;
-      pointer-events: none;
-      animation: float 6s linear infinite;
-    }
-
-    @keyframes float {
-      0% { transform: translateY(0) translateX(0); opacity: 1; }
-      50% { transform: translateY(-30px) translateX(20px); opacity: 0.5; }
-      100% { transform: translateY(0) translateX(0); opacity: 1; }
-    }
-
-    /* Fundo hero */
-    .hero-bg {
-      position:absolute;
-      top:0; left:0; width:100%; height:100%;
-      background:url('https://images.unsplash.com/photo-1616587892085-3b85d42066ef?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MjA3fDB8MXxzZWFyY2h8MXx8Y2lyY3VpdCUyMGNpcmN1aXR8ZW58MHx8fHwxNjkwMzU2OTQ5&ixlib=rb-4.0.3&q=80&w=1080') no-repeat center center/cover;
-      z-index:0;
-    }
-
+    @media(min-width:860px){header{flex-wrap:nowrap}nav{margin-top:0}}
+    @media(min-width:1024px){.hero .title{font-size:42px}}
   </style>
 </head>
 <body>
 <div class="wrap">
-  <!-- Header -->
   <header>
     <div class="logo-animated">
       <svg viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg">
@@ -185,27 +131,10 @@
     </nav>
   </header>
 
-  <!-- Hero -->
   <main>
     <section id="home" class="hero">
       <div class="hero-bg"></div>
-
-      <!-- Partículas -->
-      <script>
-        const hero = document.querySelector('.hero');
-        for(let i=0;i<40;i++){
-          const particle = document.createElement('div');
-          particle.classList.add('particle');
-          particle.style.top = Math.random() * 100 + '%';
-          particle.style.left = Math.random() * 100 + '%';
-          particle.style.width = 2 + Math.random()*4 + 'px';
-          particle.style.height = particle.style.width;
-          particle.style.animationDuration = 4 + Math.random()*4 + 's';
-          hero.appendChild(particle);
-        }
-      </script>
-
-      <div style="position:relative; z-index:1;">
+      <div class="hero-content">
         <h1 class="title">Onde tecnologia encontra aprendizado</h1>
         <p>Conteúdos práticos sobre hardware, desempenho de PCs e inteligência artificial, em linguagem acessível para iniciantes.</p>
         <div class="hero-actions">
@@ -214,7 +143,6 @@
           <a href="https://www.youtube.com/@Si-Axis" target="_blank" class="btn-youtube">&#9658; YouTube</a>
         </div>
 
-        <!-- Cards -->
         <div class="cards">
           <div class="card">
             <div class="small">E-book</div>
@@ -223,17 +151,14 @@
             <button class="btn-saiba-mais">Saiba mais</button>
             <div class="resumo" style="display:none; margin-top:10px; padding:10px; border:1px solid #ccc;">
               Este e-book apresenta a Era da Computação de forma prática, abordando desde conceitos básicos até aplicações modernas. Ideal para quem quer entender a evolução da tecnologia e como ela impacta nosso dia a dia.
-              <br><br>
-              <button class="btn-modal">Ver detalhes</button>
+              <br><button class="btn-modal">Ver detalhes</button>
             </div>
           </div>
-
           <div class="card">
             <div class="small">Tutoriais</div>
             <strong>Montagem & Manutenção</strong>
             <p class="small">Guia passo a passo para iniciantes.</p>
           </div>
-
           <div class="card">
             <div class="small">Cursos</div>
             <strong>IA aplicada</strong>
@@ -287,12 +212,24 @@
 </div>
 
 <script>
-  // Animação do logo
+  // Logo
   window.addEventListener("DOMContentLoaded", () => {
     const si = document.querySelector(".si");
     const axis = document.querySelector(".axis");
     setTimeout(() => si.classList.add("show"), 500);
     setTimeout(() => axis.classList.add("show"), 1300);
+
+    // Partículas
+    const hero = document.querySelector('.hero');
+    for(let i=0;i<50;i++){
+      const p = document.createElement('div');
+      p.className='particle';
+      p.style.left=Math.random()*100+'%';
+      p.style.top=Math.random()*100+'%';
+      p.style.width=p.style.height=(Math.random()*4+2)+'px';
+      p.style.animationDuration=(Math.random()*5+4)+'s';
+      hero.appendChild(p);
+    }
   });
 
   // Accordion
@@ -309,7 +246,7 @@
     btn.addEventListener('click', () => { modal.classList.add('show'); });
   });
   document.querySelector('.fechar').addEventListener('click', () => { modal.classList.remove('show'); });
-  window.addEventListener('click', (e) => { if (e.target == modal) modal.classList.remove('show'); });
+  window.addEventListener('click', (e) => { if(e.target==modal) modal.classList.remove('show'); });
 </script>
 </body>
 </html>
