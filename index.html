@@ -27,7 +27,7 @@
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    html, body { height: 100%; background: linear-gradient(180deg,#06080a 0%, #071018 60%); color: #e6f0f6; line-height: 1.5; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+    html, body { height: 100%; background: linear-gradient(180deg,#06080a 0%, #071018 60%); color: #e6f0f6; line-height: 1.5; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; overflow-x: hidden; }
     a { text-decoration: none; color: inherit; }
 
     .wrap { max-width: 1100px; margin: 0 auto; padding: 28px; }
@@ -39,6 +39,8 @@
       justify-content: space-between;
       align-items: center;
       padding: 10px 20px;
+      position: relative;
+      z-index: 2;
     }
 
     .logo-animated svg {
@@ -83,7 +85,7 @@
     nav a:hover { color: var(--accent); }
 
     /* Hero */
-    .hero { display: grid; grid-template-columns: 1fr; gap: 24px; margin: 48px 0; align-items: center; position: relative; overflow: hidden; }
+    .hero { display: grid; grid-template-columns: 1fr; gap: 24px; margin: 48px 0; align-items: center; position: relative; overflow: hidden; min-height: 500px; }
     .hero .title { font-size: 34px; font-weight: 800; margin-bottom: 8px; }
     .hero p { color: var(--muted); }
     .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 18px; }
@@ -136,6 +138,32 @@
     /* Responsividade */
     @media(min-width:860px) { header { flex-wrap: nowrap; } nav { margin-top: 0; } }
     @media(min-width:1024px) { .hero .title { font-size: 42px; } }
+
+    /* Hero partículas */
+    .particle {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: rgba(0, 208, 255, 0.7);
+      border-radius: 50%;
+      pointer-events: none;
+      animation: float 6s linear infinite;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0) translateX(0); opacity: 1; }
+      50% { transform: translateY(-30px) translateX(20px); opacity: 0.5; }
+      100% { transform: translateY(0) translateX(0); opacity: 1; }
+    }
+
+    /* Fundo hero */
+    .hero-bg {
+      position:absolute;
+      top:0; left:0; width:100%; height:100%;
+      background:url('https://images.unsplash.com/photo-1616587892085-3b85d42066ef?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MjA3fDB8MXxzZWFyY2h8MXx8Y2lyY3VpdCUyMGNpcmN1aXR8ZW58MHx8fHwxNjkwMzU2OTQ5&ixlib=rb-4.0.3&q=80&w=1080') no-repeat center center/cover;
+      z-index:0;
+    }
+
   </style>
 </head>
 <body>
@@ -157,19 +185,27 @@
     </nav>
   </header>
 
+  <!-- Hero -->
   <main>
-    <!-- Hero com parallax -->
     <section id="home" class="hero">
-      <div class="hero-bg" style="
-        background: url('https://i.ibb.co/7r7kQ1N/circuit-background.jpg') no-repeat center/cover;
-        position: absolute; top:0; left:0; width:100%; height:100%;
-        z-index:0; transform: translateY(0); transition: transform 0.1s ease-out;">
-      </div>
+      <div class="hero-bg"></div>
 
-      <!-- Overlay escuro -->
-      <div style="position:absolute; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.5); z-index:0;"></div>
+      <!-- Partículas -->
+      <script>
+        const hero = document.querySelector('.hero');
+        for(let i=0;i<40;i++){
+          const particle = document.createElement('div');
+          particle.classList.add('particle');
+          particle.style.top = Math.random() * 100 + '%';
+          particle.style.left = Math.random() * 100 + '%';
+          particle.style.width = 2 + Math.random()*4 + 'px';
+          particle.style.height = particle.style.width;
+          particle.style.animationDuration = 4 + Math.random()*4 + 's';
+          hero.appendChild(particle);
+        }
+      </script>
 
-      <div style="position: relative; z-index:1; text-align: center; padding: 60px 20px;">
+      <div style="position:relative; z-index:1;">
         <h1 class="title">Onde tecnologia encontra aprendizado</h1>
         <p>Conteúdos práticos sobre hardware, desempenho de PCs e inteligência artificial, em linguagem acessível para iniciantes.</p>
         <div class="hero-actions">
@@ -179,16 +215,16 @@
         </div>
 
         <!-- Cards -->
-        <div class="cards" style="margin-top:40px;">
+        <div class="cards">
           <div class="card">
             <div class="small">E-book</div>
             <strong>Era da Computação</strong>
             <p class="small">Resumo prático e aplicações.</p>
-            <button class="btn-saiba-mais btn-primary">Saiba mais</button>
+            <button class="btn-saiba-mais">Saiba mais</button>
             <div class="resumo" style="display:none; margin-top:10px; padding:10px; border:1px solid #ccc;">
               Este e-book apresenta a Era da Computação de forma prática, abordando desde conceitos básicos até aplicações modernas. Ideal para quem quer entender a evolução da tecnologia e como ela impacta nosso dia a dia.
               <br><br>
-              <button class="btn-modal btn-primary">Ver detalhes</button>
+              <button class="btn-modal">Ver detalhes</button>
             </div>
           </div>
 
@@ -274,13 +310,6 @@
   });
   document.querySelector('.fechar').addEventListener('click', () => { modal.classList.remove('show'); });
   window.addEventListener('click', (e) => { if (e.target == modal) modal.classList.remove('show'); });
-
-  // Parallax hero
-  const heroBg = document.querySelector('.hero-bg');
-  window.addEventListener('scroll', () => {
-    const offset = window.scrollY;
-    heroBg.style.transform = 'translateY(' + offset * 0.3 + 'px)';
-  });
 </script>
 </body>
 </html>
