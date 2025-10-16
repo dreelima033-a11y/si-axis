@@ -33,109 +33,78 @@
     .wrap { max-width: 1100px; margin: 0 auto; padding: 28px; }
 
     /* Header */
-    header {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      align-items: center;
-      padding: 10px 20px;
-    }
-
-    .logo-animated svg {
-      width: 220px;
-      max-width: 100%;
-      height: auto;
-    }
-
-    .si, .axis {
-      opacity: 0;
-      transform: translateY(-10px);
-      transition: all 0.6s ease;
-    }
-
+    header { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; padding: 10px 20px; }
+    .logo-animated svg { width: 220px; max-width: 100%; height: auto; }
+    .si, .axis { opacity: 0; transform: translateY(-10px); transition: all 0.6s ease; }
     .si.show { opacity: 1; transform: translateY(0); animation: glow 2s infinite alternate; }
     .axis.show { opacity: 1; transform: translateY(0); animation: glow 2s infinite alternate 0.8s; }
-
-    @keyframes glow {
-      0% { fill-opacity: 0.7; filter: drop-shadow(0 0 6px currentColor); }
-      50% { fill-opacity: 1; filter: drop-shadow(0 0 12px currentColor); }
-      100% { fill-opacity: 0.8; filter: drop-shadow(0 0 6px currentColor); }
-    }
-
-    .logo-animated .small {
-      font-size: 14px;
-      color: #9aa6b2;
-      margin-top: 4px;
-    }
-
-    nav {
-      display: flex;
-      gap: 18px;
-      flex-wrap: wrap;
-      margin-top: 10px;
-    }
-
-    nav a {
-      font-weight: 600;
-      color: #9aa6b2;
-      transition: color 0.2s;
-    }
+    @keyframes glow { 0% { fill-opacity: 0.7; filter: drop-shadow(0 0 6px currentColor); } 50% { fill-opacity: 1; filter: drop-shadow(0 0 12px currentColor); } 100% { fill-opacity: 0.8; filter: drop-shadow(0 0 6px currentColor); } }
+    .logo-animated .small { font-size: 14px; color: #9aa6b2; margin-top: 4px; }
+    nav { display: flex; gap: 18px; flex-wrap: wrap; margin-top: 10px; }
+    nav a { font-weight: 600; color: #9aa6b2; transition: color 0.2s; }
     nav a:hover { color: var(--accent); }
 
     /* Hero */
-    .hero { display: grid; grid-template-columns: 1fr; gap: 24px; margin: 48px 0; align-items: center; }
-    .hero .title { font-size: 34px; font-weight: 800; margin-bottom: 8px; }
-    .hero p { color: var(--muted); }
-    .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 18px; }
+    .hero {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 60px 20px;
+      margin: 48px 0;
+      overflow: hidden;
+    }
+    .hero video {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      z-index: -2;
+    }
+    .hero::after {
+      content:'';
+      position:absolute; top:0; left:0; width:100%; height:100%;
+      background: rgba(0,0,0,0.5); z-index:-1;
+    }
+    .hero .title { font-size: 36px; font-weight: 800; margin-bottom: 16px; }
+    .hero p { color: var(--muted); font-size: 1.2rem; max-width: 700px; margin: 0 auto 24px; }
+    .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
 
-    .btn { padding: 12px 18px; border-radius: 10px; border: 0; cursor: pointer; font-weight: 700; }
-    .btn-primary { background: var(--accent); color: #001; font-weight: bold; transition: transform 0.2s; }
+    /* Botões */
+    .btn { padding: 12px 20px; border-radius: 12px; border: none; cursor: pointer; font-weight: 700; transition: transform 0.2s; }
+    .btn-primary { background: var(--accent); color: #001; font-weight: bold; }
     .btn-primary:hover { transform: scale(1.05); }
-
-    .btn-ebook { display: inline-block; padding: 14px 28px; border-radius: 12px; background: linear-gradient(90deg, #00d0ff, #0077ff); color: #fff; font-weight: 800; font-size: 18px; text-align: center; box-shadow: 0 6px 20px rgba(0,0,0,0.6); transition: all 0.25s ease-in-out; }
+    .btn-ebook { display: inline-block; padding: 14px 28px; border-radius: 12px; background: linear-gradient(90deg, #00d0ff, #0077ff); color: #fff; font-weight: 800; font-size: 18px; box-shadow: 0 6px 20px rgba(0,0,0,0.6); transition: all 0.25s ease-in-out; }
     .btn-ebook:hover { transform: scale(1.08); box-shadow: 0 10px 25px rgba(0,0,0,0.8); background: linear-gradient(90deg, #38caff, #005ce6); }
-
-    .btn-youtube { background: linear-gradient(90deg, #ff0000, #ff4c4c); color: #fff; box-shadow: 0 0 10px #ff0000, 0 0 20px #ff4c4c; font-weight: 800; font-size: 16px; border-radius: 12px; padding: 12px 20px; transition: all 0.3s ease-in-out; }
+    .btn-youtube { background: linear-gradient(90deg, #ff0000, #ff4c4c); color: #fff; box-shadow: 0 0 10px #ff0000,0 0 20px #ff4c4c; font-weight: 800; font-size: 16px; border-radius: 12px; padding: 12px 20px; transition: all 0.3s ease-in-out; }
     .btn-youtube:hover { transform: scale(1.05); box-shadow: 0 0 20px #ff0000,0 0 40px #ff4c4c; }
 
     /* Cards */
     .cards { display: grid; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); gap: 16px; margin-top: 24px; }
-    .card { background: var(--card); padding: 18px; border-radius: 14px; box-shadow: 0 6px 20px rgba(0,0,0,0.6); transition: transform 0.2s; }
-    .card:hover { transform: translateY(-5px); }
+    .card { background: var(--card); padding: 20px; border-radius: 16px; box-shadow: 0 6px 20px rgba(0,0,0,0.6); transition: transform 0.3s, box-shadow 0.3s; }
+    .card:hover { transform: translateY(-6px); box-shadow: 0 12px 25px rgba(0,0,0,0.7); }
+    .card strong { display:block; margin:10px 0; color: var(--accent-2); }
+
     .small { font-size: 13px; color: var(--muted); }
 
     section { margin: 44px 0; }
-    h2 { font-size: 24px; margin-bottom: 12px; }
+    h2 { font-size: 28px; margin-bottom: 12px; color: var(--accent); }
 
-    /* Botão WhatsApp com efeito mágico */
-    .contact a {
-      display: inline-block;
-      padding: 12px 20px;
-      border-radius: 12px;
-      font-weight: 800;
-      font-size: 16px;
-      text-align: center;
-      margin-top: 10px;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      background: linear-gradient(90deg, var(--accent), var(--accent-2));
-      color: #001019;
-    }
+    /* Contato */
+    .contact a { display:inline-block; padding:12px 20px; border-radius:12px; font-weight:800; font-size:16px; margin-top:10px; text-align:center; background: linear-gradient(90deg,var(--accent),var(--accent-2)); color:#001019; transition: transform 0.3s, box-shadow 0.3s; }
+    .contact a:hover { transform: scale(1.1) rotate(-2deg); box-shadow: 0 6px 20px rgba(0,208,255,0.6),0 0 10px rgba(56,255,154,0.4); }
 
-    .contact a:hover {
-      transform: scale(1.1) rotate(-2deg);
-      box-shadow: 0 6px 20px rgba(0,208,255,0.6), 0 0 10px rgba(56,255,154,0.4);
-    }
-
-    /* Modal suave */
-    #modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 10; opacity: 0; transition: opacity 0.3s ease; }
-    #modal.show { display: block; opacity: 1; }
-    .modal-conteudo { background:#fff; margin:10% auto; padding:20px; width:90%; max-width:500px; position:relative; border-radius:12px; color:#001; transform: translateY(-20px); transition: transform 0.3s ease; }
-    #modal.show .modal-conteudo { transform: translateY(0); }
+    /* Modal */
+    #modal { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); z-index:10; opacity:0; transition: opacity 0.3s ease; }
+    #modal.show { display:block; opacity:1; }
+    .modal-conteudo { background:#fff; margin:10% auto; padding:20px; width:90%; max-width:500px; border-radius:12px; color:#001; transform:translateY(-20px); transition: transform 0.3s ease; }
+    #modal.show .modal-conteudo { transform:translateY(0); }
     .fechar { position:absolute; top:10px; right:15px; cursor:pointer; font-size:20px; }
 
     /* Responsividade */
-    @media(min-width:860px) { header { flex-wrap: nowrap; } nav { margin-top: 0; } }
-    @media(min-width:1024px) { .hero .title { font-size: 42px; } }
+    @media(max-width:768px) { .hero .title { font-size:28px; } .hero p { font-size:1rem; } }
   </style>
 </head>
 <body>
@@ -160,6 +129,10 @@
   <main>
     <!-- Hero -->
     <section id="home" class="hero">
+      <video autoplay muted loop playsinline>
+        <source src="https://www.example.com/seu-video.mp4" type="video/mp4">
+        Seu navegador não suporta vídeo.
+      </video>
       <div>
         <h1 class="title">Onde tecnologia encontra aprendizado</h1>
         <p>Conteúdos práticos sobre hardware, desempenho de PCs e inteligência artificial, em linguagem acessível para iniciantes.</p>
@@ -176,11 +149,11 @@
           <div class="small">E-book</div>
           <strong>Era da Computação</strong>
           <p class="small">Resumo prático e aplicações.</p>
-          <button class="btn-saiba-mais">Saiba mais</button>
+          <button class="btn-saiba-mais btn-primary">Saiba mais</button>
           <div class="resumo" style="display:none; margin-top:10px; padding:10px; border:1px solid #ccc;">
             Este e-book apresenta a Era da Computação de forma prática, abordando desde conceitos básicos até aplicações modernas. Ideal para quem quer entender a evolução da tecnologia e como ela impacta nosso dia a dia.
             <br><br>
-            <button class="btn-modal">Ver detalhes</button>
+            <button class="btn-modal btn-primary">Ver detalhes</button>
           </div>
         </div>
 
