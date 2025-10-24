@@ -36,15 +36,8 @@
       z-index: 2;
     }
 
-    .logo-animated svg { width: 220px; max-width: 100%; height: auto; }
-    .si, .axis { opacity: 0; transform: translateY(-10px); transition: all 0.6s ease; }
-    .si.show { opacity: 1; transform: translateY(0); animation: glow 2s infinite alternate; }
-    .axis.show { opacity: 1; transform: translateY(0); animation: glow 2s infinite alternate 0.8s; }
-    @keyframes glow {
-      0% { fill-opacity: 0.7; filter: drop-shadow(0 0 6px currentColor); }
-      50% { fill-opacity: 1; filter: drop-shadow(0 0 12px currentColor); }
-      100% { fill-opacity: 0.8; filter: drop-shadow(0 0 6px currentColor); }
-    }
+    .logo-animated { text-align:center; }
+    .logo-animated img { width: 250px; max-width: 100%; height: auto; }
     .logo-animated .small { font-size: 14px; color: #9aa6b2; margin-top: 4px; }
 
     nav { display: flex; gap: 18px; flex-wrap: wrap; margin-top: 10px; }
@@ -71,8 +64,15 @@
     .btn-ebook { display: inline-block; padding: 14px 28px; border-radius: 12px; background: linear-gradient(90deg, #00d0ff, #0077ff); color: #fff; font-weight: 800; font-size: 18px; text-align: center; box-shadow: 0 6px 20px rgba(0,0,0,0.6); transition: all 0.25s ease-in-out; }
     .btn-ebook:hover { transform: scale(1.08); box-shadow: 0 10px 25px rgba(0,0,0,0.8); background: linear-gradient(90deg, #38caff, #005ce6); }
 
-    .btn-youtube { background: linear-gradient(90deg, #ff0000, #ff4c4c); color: #fff; box-shadow: 0 0 10px #ff0000, 0 0 20px #ff4c4c; font-weight: 800; font-size: 16px; border-radius: 12px; padding: 12px 20px; transition: all 0.3s ease-in-out; }
-    .btn-youtube:hover { transform: scale(1.05); box-shadow: 0 0 20px #ff0000,0 0 40px #ff4c4c; }
+    /* Redes sociais */
+    .btn-social { display:inline-block; padding:12px 20px; border-radius:12px; color:#fff; font-weight:800; font-size:16px; text-align:center; transition: all 0.3s ease; }
+    .btn-instagram { background:#E1306C; }
+    .btn-facebook { background:#1877F2; }
+    .btn-x { background:#000; }
+    .btn-whatsapp { background:#25D366; }
+    .btn-youtube { background:#FF0000; }
+
+    .btn-social:hover { transform: scale(1.05); filter: brightness(1.1); }
 
     /* Cards */
     .cards { display: grid; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); gap: 16px; margin-top: 24px; }
@@ -83,19 +83,8 @@
     section { margin: 44px 0; }
     h2 { font-size: 24px; margin-bottom: 12px; }
 
-    /* Botão WhatsApp */
-    .contact a {
-      display: inline-block;
-      padding: 12px 20px;
-      border-radius: 12px;
-      font-weight: 800;
-      font-size: 16px;
-      text-align: center;
-      margin-top: 10px;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      background: linear-gradient(90deg, var(--accent), var(--accent-2));
-      color: #001019;
-    }
+    /* Contato */
+    .contact a { display: inline-block; padding: 12px 20px; border-radius: 12px; font-weight: 800; font-size: 16px; text-align: center; margin-top: 10px; transition: transform 0.3s ease, box-shadow 0.3s ease; background: linear-gradient(90deg, var(--accent), var(--accent-2)); color: #001019; }
     .contact a:hover { transform: scale(1.1) rotate(-2deg); box-shadow: 0 6px 20px rgba(0,208,255,0.6), 0 0 10px rgba(56,255,154,0.4); }
 
     /* Modal */
@@ -105,22 +94,16 @@
     #modal.show .modal-conteudo { transform: translateY(0); }
     .fechar { position:absolute; top:10px; right:15px; cursor:pointer; font-size:20px; }
 
-    /* Partículas */
-    .particle { position:absolute; width:4px; height:4px; background: rgba(0,208,255,0.7); border-radius:50%; pointer-events:none; animation: float 6s linear infinite; }
-    @keyframes float { 0%{transform:translateY(0) translateX(0);opacity:1}50%{transform:translateY(-30px) translateX(20px);opacity:0.5}100%{transform:translateY(0) translateX(0);opacity:1} }
-
     @media(min-width:860px){header{flex-wrap:nowrap}nav{margin-top:0}}
     @media(min-width:1024px){.hero .title{font-size:42px}}
   </style>
 </head>
 <body>
 <div class="wrap">
+  <!-- Header com logo imagem -->
   <header>
     <div class="logo-animated">
-      <svg viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg">
-        <text class="si" x="0" y="40" font-family="Inter, Arial" font-size="40" font-weight="900" fill="#00d0ff">Si</text>
-        <text class="axis" x="60" y="40" font-family="Inter, Arial" font-size="42" font-weight="900" fill="#38ff9a">-Axis</text>
-      </svg>
+      <img src="assets/logo_site.png" alt="Logo da Si.Axis">
       <div class="small">Tecnologia • Inteligência Artificial</div>
     </div>
     <nav>
@@ -131,6 +114,7 @@
     </nav>
   </header>
 
+  <!-- Hero -->
   <main>
     <section id="home" class="hero">
       <div class="hero-bg"></div>
@@ -140,7 +124,12 @@
         <div class="hero-actions">
           <button class="btn btn-primary" onclick="document.location.hash='#projetos'">Conhecer o projeto</button>
           <a href="https://go.hotmart.com/O101872807C" target="_blank" class="btn-ebook">Comprar e-book</a>
-          <a href="https://www.youtube.com/@Si-Axis" target="_blank" class="btn-youtube">&#9658; YouTube</a>
+          <!-- Botões redes sociais -->
+          <a href="https://www.instagram.com" target="_blank" class="btn-social btn-instagram">Instagram</a>
+          <a href="https://www.facebook.com" target="_blank" class="btn-social btn-facebook">Facebook</a>
+          <a href="https://twitter.com" target="_blank" class="btn-social btn-x">X</a>
+          <a href="https://wa.me/5511949354732" target="_blank" class="btn-social btn-whatsapp">WhatsApp</a>
+          <a href="https://www.youtube.com/@Si-Axis" target="_blank" class="btn-social btn-youtube">YouTube</a>
         </div>
 
         <div class="cards">
@@ -212,26 +201,6 @@
 </div>
 
 <script>
-  // Logo
-  window.addEventListener("DOMContentLoaded", () => {
-    const si = document.querySelector(".si");
-    const axis = document.querySelector(".axis");
-    setTimeout(() => si.classList.add("show"), 500);
-    setTimeout(() => axis.classList.add("show"), 1300);
-
-    // Partículas
-    const hero = document.querySelector('.hero');
-    for(let i=0;i<50;i++){
-      const p = document.createElement('div');
-      p.className='particle';
-      p.style.left=Math.random()*100+'%';
-      p.style.top=Math.random()*100+'%';
-      p.style.width=p.style.height=(Math.random()*4+2)+'px';
-      p.style.animationDuration=(Math.random()*5+4)+'s';
-      hero.appendChild(p);
-    }
-  });
-
   // Accordion
   document.querySelectorAll('.btn-saiba-mais').forEach(btn => {
     btn.addEventListener('click', () => {
