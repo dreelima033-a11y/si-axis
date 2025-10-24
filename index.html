@@ -52,11 +52,33 @@ nav a:hover{color:var(--accent);}
 .btn-youtube{background:linear-gradient(90deg,#ff0000,#ff4c4c);color:#fff;box-shadow:0 0 10px #ff0000,0 0 20px #ff4c4c;font-weight:800;font-size:16px;border-radius:12px;padding:12px 20px;transition:all 0.3s ease-in-out;}
 .btn-youtube:hover{transform:scale(1.05);box-shadow:0 0 20px #ff0000,0 0 40px #ff4c4c;}
 
-/* Social Icons */
-.social-icons{display:flex;align-items:center;gap:18px;margin-top:12px;}
-.social-icons a{display:inline-flex;align-items:center;justify-content:center;}
-.social-icons svg{width:36px;height:36px;fill:var(--icon-blue);transition:transform 0.3s, fill 0.3s;}
-.social-icons svg:hover{transform:scale(1.2);fill:var(--accent);}
+/* Social Icons Ajustado */
+.social-icons {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 20px 0 0 20px;  /* topo e esquerda */
+    padding-right: 20px;     /* margem direita */
+    flex-wrap: wrap;
+}
+
+.social-icons a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.social-icons svg {
+    width: 36px;
+    height: 36px;
+    fill: var(--icon-blue);
+    transition: transform 0.3s, fill 0.3s;
+}
+
+.social-icons svg:hover {
+    transform: scale(1.2);
+    fill: var(--accent);
+}
 
 /* Cards */
 .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:24px;}
@@ -173,56 +195,4 @@ footer{text-align:center;padding:18px 0;font-size:14px;color:var(--muted);}
   <a href="mailto:contato@siaxis.com.br">Enviar E-mail</a>
 </section>
 
-<footer>© 2025 Si-Axis. Todos os direitos reservados.</footer>
-
-<!-- Modal -->
-<div id="modal">
-  <div class="modal-conteudo">
-    <span class="fechar">&times;</span>
-    <h3>Detalhes do projeto</h3>
-    <p>Aqui você pode colocar informações detalhadas sobre o projeto selecionado.</p>
-  </div>
-</div>
-
-</div>
-
-<script>
-// Logo Animation
-window.addEventListener('DOMContentLoaded', ()=>{
-  document.querySelector('.si').classList.add('show');
-  setTimeout(()=>document.querySelector('.axis').classList.add('show'), 300);
-});
-
-// Botões Saiba Mais
-document.querySelectorAll('.btn-saiba-mais').forEach(btn=>{
-  btn.addEventListener('click',()=>{
-    btn.nextElementSibling.classList.toggle('show');
-  });
-});
-
-// Modal
-const modal=document.getElementById('modal');
-document.querySelectorAll('.btn-modal').forEach(btn=>{
-  btn.addEventListener('click',()=>modal.classList.add('show'));
-});
-document.querySelector('.fechar').addEventListener('click',()=>modal.classList.remove('show'));
-window.addEventListener('keydown', e => {if(e.key==='Escape') modal.classList.remove('show');});
-
-// Partículas
-function criarParticulas(){
-  const bg=document.querySelector('.hero-bg');
-  for(let i=0;i<50;i++){
-    const p=document.createElement('div');
-    p.classList.add('particle');
-    p.style.left=Math.random()*100+'%';
-    p.style.top=Math.random()*100+'%';
-    p.style.width=Math.random()*4+2+'px';
-    p.style.height=p.style.width;
-    p.style.animationDuration=(Math.random()*5+3)+'s';
-    bg.appendChild(p);
-  }
-}
-criarParticulas();
-</script>
-</body>
-</html>
+<footer>© 2025 Si-Axis. Todos os direitos
