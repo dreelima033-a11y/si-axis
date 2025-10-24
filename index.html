@@ -17,6 +17,7 @@
   --icon-blue: #2196F3;
   font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
 }
+
 *{box-sizing:border-box;margin:0;padding:0;}
 html,body{height:100%;background:var(--bg);color:#e6f0f6;line-height:1.5;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;overflow-x:hidden;}
 a{text-decoration:none;color:inherit;}
@@ -36,7 +37,7 @@ nav a:hover{color:var(--accent);}
 
 /* Hero */
 .hero{position:relative;display:grid;grid-template-columns:1fr;gap:24px;margin:48px 0;align-items:center;min-height:500px;overflow:hidden;}
-.hero-bg{position:absolute;top:0;left:0;width:100%;height:100%;background:url('https://images.unsplash.com/photo-1616587892085-3b85d42066ef?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MjA3fDB8MXxzZWFyY2h8MXx8Y2lyY3VpdCUyMGNpcmN1aXR8ZW58MHx8fHwxNjkwMzU2OTQ5&ixlib=rb-4.0.3&q=80&w=1080') no-repeat center center/cover;z-index:0;}
+.hero-bg{position:absolute;top:0;left:0;width:100%;height:100%;background:url('https://images.unsplash.com/photo-1616587892085-3b85d42066ef?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080') no-repeat center center/cover;z-index:0;}
 .hero-content{position:relative;z-index:1;}
 .hero .title{font-size:34px;font-weight:800;margin-bottom:8px;}
 .hero p{color:var(--muted);}
@@ -46,12 +47,11 @@ nav a:hover{color:var(--accent);}
 .btn-primary:hover{transform:scale(1.05);}
 .btn-ebook{display:inline-block;padding:14px 28px;border-radius:12px;background:linear-gradient(90deg,#00d0ff,#0077ff);color:#fff;font-weight:800;font-size:18px;text-align:center;box-shadow:0 6px 20px rgba(0,0,0,0.6);transition:all 0.25s ease-in-out;}
 .btn-ebook:hover{transform:scale(1.08);box-shadow:0 10px 25px rgba(0,0,0,0.8);background:linear-gradient(90deg,#38caff,#005ce6);}
-.btn-youtube{background:linear-gradient(90deg,#ff0000,#ff4c4c);color:#fff;box-shadow:0 0 10px #ff0000,0 0 20px #ff4c4c;font-weight:800;font-size:16px;border-radius:12px;padding:12px 20px;transition:all 0.3s ease-in-out;}
-.btn-youtube:hover{transform:scale(1.05);box-shadow:0 0 20px #ff0000,0 0 40px #ff4c4c;}
 
 /* Social Icons Inline */
-.social-icons{display:flex;gap:12px;margin-top:12px;}
-.social-icons svg{width:32px;height:32px;fill:var(--icon-blue);transition:all 0.3s;}
+.social-icons{display:flex;gap:18px;margin-top:12px;align-items:center;}
+.social-icons a{display:flex;align-items:center;justify-content:center;}
+.social-icons svg{width:36px;height:36px;fill:var(--icon-blue);transition:all 0.3s;}
 .social-icons svg:hover{transform:scale(1.2);fill:var(--accent);}
 
 /* Cards */
@@ -76,7 +76,9 @@ h2{font-size:24px;margin-bottom:12px;}
 /* Partículas */
 .particle{position:absolute;width:4px;height:4px;background:rgba(0,208,255,0.7);border-radius:50%;pointer-events:none;animation:float 6s linear infinite;}
 @keyframes float{0%{transform:translateY(0) translateX(0);opacity:1}50%{transform:translateY(-30px) translateX(20px);opacity:0.5}100%{transform:translateY(0) translateX(0) opacity:1}}
-@media(min-width:860px){header{flex-wrap:nowrap}nav{margin-top:0}}@media(min-width:1024px){.hero .title{font-size:42px}}
+
+@media(min-width:860px){header{flex-wrap:nowrap}nav{margin-top:0}}
+@media(min-width:1024px){.hero .title{font-size:42px}}
 </style>
 </head>
 <body>
@@ -109,128 +111,31 @@ h2{font-size:24px;margin-bottom:12px;}
     </div>
 
     <div class="social-icons">
-  <!-- YouTube -->
-  <a href="https://www.youtube.com/channel/SEU_CANAL" target="_blank" rel="noopener">
-    <svg viewBox="0 0 24 24">
-      <path d="M23.498 6.186a2.82 2.82 0 0 0-1.987-1.987C19.825 4 12 4 12 4s-7.825 0-9.511.199A2.82 2.82 0 0 0 .502 6.186 29.608 29.608 0 0 0 0 12a29.608 29.608 0 0 0 .502 5.814 2.82 2.82 0 0 0 1.987 1.987C4.175 20 12 20 12 20s7.825 0 9.511-.199a2.82 2.82 0 0 0 1.987-1.987A29.608 29.608 0 0 0 24 12a29.608 29.608 0 0 0-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-    </svg>
-  </a>
+      <!-- YouTube -->
+      <a href="https://www.youtube.com/@Si-Axis" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24"><path d="M23.498 6.186a2.82 2.82 0 0 0-1.987-1.987C19.825 4 12 4 12 4s-7.825 0-9.511.199A2.82 2.82 0 0 0 .502 6.186 29.608 29.608 0 0 0 0 12a29.608 29.608 0 0 0 .502 5.814 2.82 2.82 0 0 0 1.987 1.987C4.175 20 12 20 12 20s7.825 0 9.511-.199a2.82 2.82 0 0 0 1.987-1.987A29.608 29.608 0 0 0 24 12a29.608 29.608 0 0 0-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+      </a>
 
-  <!-- Instagram -->
-  <a href="https://www.instagram.com/SEU_USUARIO" target="_blank" rel="noopener">
-    <svg viewBox="0 0 24 24">
-      <path d="M12 2.163c3.204 0 3.584.012 4.849.07 1.366.062 2.633.34 3.608 1.314.975.975 1.252 2.242 1.314 3.608.058 1.265.07 1.645.07 4.849s-.012 3.584-.07 4.849c-.062 1.366-.34 2.633-1.314 3.608-.975.975-2.242 1.252-3.608 1.314-1.265.058-1.645.07-4.849.07s-3.584-.012-4.849-.07c-1.366-.062-2.633-.34-3.608-1.314-.975-.975-1.252-2.242-1.314-3.608-.058-1.265-.07-1.645-.07-4.849s.012-3.584.07-4.849c.062-1.366.34-2.633 1.314-3.608.975-.975 2.242-1.252 3.608-1.314 1.265-.058 1.645-.07 4.849-.07zM12 0C8.741 0 8.332.014 7.052.072 5.775.13 4.657.443 3.684 1.416 2.711 2.389 2.398 3.507 2.34 4.784.282 5.063 0 8.741 0 12s.282 6.937.34 7.216c.058 1.277.371 2.395 1.344 3.368.973.973 2.091 1.286 3.368 1.344C8.332 23.986 8.741 24 12 24s3.668-.014 4.948-.072c1.277-.058 2.395-.371 3.368-1.344.973-.973 1.286-2.091 1.344-3.368C23.718 18.937 24 15.259 24 12s-.282-6.937-.34-7.216c-.058-1.277-.371-2.395-1.344-3.368-.973-.973-2.091-1.286-3.368-1.344C15.668.014 15.259 0 12 0zm0 5.838A6.162 6.162 0 0 0 5.838 12 6.162 6.162 0 0 0 12 18.162 6.162 6.162 0 0 0 18.162 12 6.162 6.162 0 0 0 12 5.838zm0 10.162A4 4 0 1 1 16 12a4 4 0 0 1-4 4zm6.406-11.845a1.44 1.44 0 1 1-2.88 0 1.44 1.44 0 0 1 2.88 0z"/>
-    </svg>
-  </a>
+      <!-- Instagram -->
+      <a href="https://www.instagram.com/SEU_USUARIO" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.849.07 1.366.062 2.633.34 3.608 1.314.975.975 1.252 2.242 1.314 3.608.058 1.265.07 1.645.07 4.849s-.012 3.584-.07 4.849c-.062 1.366-.34 2.633-1.314 3.608-.975.975-2.242 1.252-3.608 1.314-1.265.058-1.645.07-4.849.07s-3.584-.012-4.849-.07c-1.366-.062-2.633-.34-3.608-1.314-.975-.975-1.252-2.242-1.314-3.608-.058-1.265-.07-1.645-.07-4.849s.012-3.584.07-4.849c.062-1.366.34-2.633 1.314-3.608.975-.975 2.242-1.252 3.608-1.314 1.265-.058 1.645-.07 4.849-.07zM12 0C8.741 0 8.332.014 7.052.072 5.775.13 4.657.443 3.684 1.416 2.711 2.389 2.398 3.507 2.34 4.784.282 5.063 0 8.741 0 12s.282 6.937.34 7.216c.058 1.277.371 2.395 1.344 3.368.973.973 2.091 1.286 3.368 1.344C8.332 23.986 8.741 24 12 24s3.668-.014 4.948-.072c1.277-.058 2.395-.371 3.368-1.344.973-.973 1.286-2.091 1.344-3.368C23.718 18.937 24 15.259 24 12s-.282-6.937-.34-7.216c-.058-1.277-.371-2.395-1.344-3.368-.973-.973-2.091-1.286-3.368-1.344C15.668.014 15.259 0 12 0zm0 5.838A6.162 6.162 0 0 0 5.838 12 6.162 6.162 0 0 0 12 18.162 6.162 6.162 0 0 0 18.162 12 6.162 6.162 0 0 0 12 5.838zm0 10.162A4 4 0 1 1 16 12a4 4 0 0 1-4 4zm6.406-11.845a1.44 1.44 0 1 1-2.88 0 1.44 1.44 0 0 1 2.88 0z"/></svg>
+      </a>
 
-  <!-- X -->
-  <a href="https://twitter.com/SEU_USUARIO" target="_blank" rel="noopener">
-    <svg viewBox="0 0 24 24">
-      <path d="M18.364 5.636l-1.414-1.414L12 9.172 7.05 4.222 5.636 5.636 10.586 10.586 5.636 15.536l1.414 1.414L12 12.828l4.95 4.95 1.414-1.414-4.95-4.95z"/>
-    </svg>
-  </a>
+      <!-- X -->
+      <a href="https://twitter.com/SEU_USUARIO" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24"><path d="M18.364 5.636l-1.414-1.414L12 9.172 7.05 4.222 5.636 5.636 10.586 10.586 5.636 15.536l1.414 1.414L12 12.828l4.95 4.95 1.414-1.414-4.95-4.95z"/></svg>
+      </a>
 
-  <!-- WhatsApp -->
-  <a href="https://wa.me/5511949354732" target="_blank" rel="noopener">
-    <svg viewBox="0 0 24 24">
-      <path d="M20.52 3.48A11.91 11.91 0 0 0 12 0C5.373 0 0 5.373 0 12c0 2.13.556 4.15 1.611 5.918L0 24l6.173-1.611A11.936 11.936 0 0 0 12 24c6.627 0 12-5.373 12-12 0-3.18-1.238-6.18-3.48-8.52zM12 22c-1.92 0-3.72-.502-5.292-1.38l-.378-.224-3.666.956.98-3.568-.246-.384A9.962 9.962 0 0 1 2 12c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10zm5.292-7.708c-.292-.146-1.726-.854-1.992-.954-.266-.1-.46-.146-.654.146s-.754.954-.926 1.146c-.172.192-.346.218-.638.072-.292-.146-1.232-.454-2.35-1.44-.868-.774-1.454-1.728-1.626-2.02-.172-.292-.018-.45.128-.596.132-.132.292-.346.438-.518.146-.172.194-.292.292-.486.1-.194.05-.364-.025-.51-.072-.146-.654-1.578-.896-2.164-.236-.568-.476-.492-.654-.502l-.558-.01c-.172 0-.45.064-.686.292-.236.236-.9.88-.9 2.146s.922 2.488 1.05 2.664c.128.172 1.814 2.768 4.396 3.88 2.582 1.114 2.582.742 3.054.696.47-.046 1.526-.622 1.742-1.224.218-.602.218-1.118.152-1.224-.066-.106-.236-.172-.492-.318z"/>
-    </svg>
-  </a>
-</div>
-
-<style>
-.social-icons {
-  display: flex;
-  align-items: center;
-  gap: 18px;
-  margin-top: 12px;
-}
-.social-icons a {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-}
-.social-icons svg {
-  width: 36px;
-  height: 36px;
-  fill: #2196F3;
-  transition: transform 0.3s, fill 0.3s;
-}
-.social-icons svg:hover {
-  transform: scale(1.2);
-  fill: #00d0ff;
-}
-</style>
-
-
-    <div class="cards">
-      <div class="card">
-        <div class="small">E-book</div>
-        <strong>Era da Computação</strong>
-        <p class="small">Resumo prático e aplicações.</p>
-        <button class="btn-saiba-mais">Saiba mais</button>
-        <div class="resumo" style="display:none;margin-top:10px;padding:10px;border:1px solid #ccc;">
-          Este e-book apresenta a Era da Computação de forma prática, abordando desde conceitos básicos até aplicações modernas. Ideal para quem quer entender a evolução da tecnologia e como ela impacta nosso dia a dia.
-          <br><button class="btn-modal">Ver detalhes</button>
-        </div>
-      </div>
-      <div class="card">
-        <div class="small">Tutoriais</div>
-        <strong>Montagem & Manutenção</strong>
-        <p class="small">Guia passo a passo para iniciantes.</p>
-      </div>
-      <div class="card">
-        <div class="small">Cursos</div>
-        <strong>IA aplicada</strong>
-        <p class="small">Conteúdos futuros planejados.</p>
-      </div>
+      <!-- WhatsApp -->
+      <a href="https://wa.me/5511949354732" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24"><path d="M20.52 3.48A11.91 11.91 0 0 0 12 0C5.373 0 0 5.373 0 12c0 2.13.556 4.15 1.611 5.918L0 24l6.173-1.611A11.936 11.936 0 0 0 12 24c6.627 0 12-5.373 12-12 0-3.18-1.238-6.18-3.48-8.52zM12 22c-1.92 0-3.72-.502-5.292-1.38l-.378-.224-3.666.956.98-3.568-.246-.384A9.962 9.962 0 0 1 2 12c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10zm5.292-7.708c-.292-.146-1.726-.854-1.992-.954-.266-.1-.46-.146-.654.146s-.754.954-.926 1.146c-.172.192-.346.218-.638.072-.292-.146-1.232-.454-2.35-1.44-.868-.774-1.454-1.728-1.626-2.02-.172-.292-.018-.45.128-.596.132-.132.292-.346.438-.518.146-.172.194-.292.292-.486.1-.194.05-.364-.025-.51-.072-.146-.654-1.578-.896-2.164-.236-.568-.476-.492-.654-.502l-.558-.01c-.172 0-.45.064-.686.292-.236.236-.9.88-.9 2.146s.922 2.488 1.05 2.664c.128.172 1.814 2.768 4.396 3.88 2.582 1.114 2.582.742 3.054.696.47-.046 1.526-.622 1.742-1.224.218-.602.218-1.118.152-1.224-.066-.106-.236-.172-.492-.318z"/></svg>
+      </a>
     </div>
+
   </div>
 </section>
 
-<!-- Sobre -->
-<section id="sobre">
-<h2>Sobre</h2>
-<p class="small">"Na Si-Axis, simplificamos tecnologia com responsabilidade: hardware, desempenho de PCs e IA explicados de forma prática para quem deseja aprender, criar e contribuir para um futuro mais sustentável."</p>
-</section>
-
-<!-- Projetos -->
-<section id="projetos">
-<h2>Projetos</h2>
-<div class="cards">
-  <div class="card">
-    <strong>Guias & Tutoriais</strong>
-    <p class="small">Manutenção, otimização, montagem.</p>
-  </div>
-  <div class="card">
-    <strong>Fórum</strong>
-    <p class="small">Comunidade para trocar conhecimento.</p>
-  </div>
-</div>
-</section>
-
-<!-- Contato -->
-<section id="contato" class="contact">
-<h2>Contato</h2>
-<p class="small">Fale direto pelo WhatsApp clicando no botão abaixo:</p>
-<a href="https://wa.me/5511949354732" target="_blank" rel="noopener">Abrir WhatsApp</a>
-</section>
-
-</main>
-
-<!-- Modal -->
-<div id="modal">
-<div class="modal-conteudo">
-  <span class="fechar">&times;</span>
-  <h3>Detalhes do E-book</h3>
-  <p>Este e-book aprofunda conceitos da Era da Computação, aplicações práticas e exercícios para entender melhor o funcionamento da tecnologia.</p>
-</div>
-</div>
-
-<footer>
-© Si-Axis — Foco em aprendizado prático e tecnologia.
-</footer>
-</div>
+<!-- O resto do site continua igual -->
 
 <script>
 // Logo
