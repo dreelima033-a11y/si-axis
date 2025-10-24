@@ -36,8 +36,23 @@
       z-index: 2;
     }
 
-    .logo-animated { text-align:center; }
-    .logo-animated img { width: 250px; max-width: 100%; height: auto; }
+    /* Logo animado */
+    .logo-animated {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .logo-img {
+      width: 250px;
+      max-width: 100%;
+      height: auto;
+      animation: glow 2s infinite alternate;
+    }
+    @keyframes glow {
+      0% { filter: drop-shadow(0 0 6px #00d0ff); }
+      50% { filter: drop-shadow(0 0 14px #00d0ff); }
+      100% { filter: drop-shadow(0 0 6px #00d0ff); }
+    }
     .logo-animated .small { font-size: 14px; color: #9aa6b2; margin-top: 4px; }
 
     nav { display: flex; gap: 18px; flex-wrap: wrap; margin-top: 10px; }
@@ -64,15 +79,8 @@
     .btn-ebook { display: inline-block; padding: 14px 28px; border-radius: 12px; background: linear-gradient(90deg, #00d0ff, #0077ff); color: #fff; font-weight: 800; font-size: 18px; text-align: center; box-shadow: 0 6px 20px rgba(0,0,0,0.6); transition: all 0.25s ease-in-out; }
     .btn-ebook:hover { transform: scale(1.08); box-shadow: 0 10px 25px rgba(0,0,0,0.8); background: linear-gradient(90deg, #38caff, #005ce6); }
 
-    /* Redes sociais */
-    .btn-social { display:inline-block; padding:12px 20px; border-radius:12px; color:#fff; font-weight:800; font-size:16px; text-align:center; transition: all 0.3s ease; }
-    .btn-instagram { background:#E1306C; }
-    .btn-facebook { background:#1877F2; }
-    .btn-x { background:#000; }
-    .btn-whatsapp { background:#25D366; }
-    .btn-youtube { background:#FF0000; }
-
-    .btn-social:hover { transform: scale(1.05); filter: brightness(1.1); }
+    .btn-youtube { background: linear-gradient(90deg, #ff0000, #ff4c4c); color: #fff; box-shadow: 0 0 10px #ff0000, 0 0 20px #ff4c4c; font-weight: 800; font-size: 16px; border-radius: 12px; padding: 12px 20px; transition: all 0.3s ease-in-out; }
+    .btn-youtube:hover { transform: scale(1.05); box-shadow: 0 0 20px #ff0000,0 0 40px #ff4c4c; }
 
     /* Cards */
     .cards { display: grid; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); gap: 16px; margin-top: 24px; }
@@ -83,8 +91,45 @@
     section { margin: 44px 0; }
     h2 { font-size: 24px; margin-bottom: 12px; }
 
+    /* Botões sociais estilo iPhone */
+    .social-buttons {
+      display: flex;
+      gap: 12px;
+      margin-top: 12px;
+    }
+    .social-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background-color: #1a73e8;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .social-btn img {
+      width: 24px;
+      height: 24px;
+      filter: brightness(0) invert(1);
+    }
+    .social-btn:hover {
+      transform: scale(1.15);
+      box-shadow: 0 0 12px #1a73e8;
+    }
+
     /* Contato */
-    .contact a { display: inline-block; padding: 12px 20px; border-radius: 12px; font-weight: 800; font-size: 16px; text-align: center; margin-top: 10px; transition: transform 0.3s ease, box-shadow 0.3s ease; background: linear-gradient(90deg, var(--accent), var(--accent-2)); color: #001019; }
+    .contact a {
+      display: inline-block;
+      padding: 12px 20px;
+      border-radius: 12px;
+      font-weight: 800;
+      font-size: 16px;
+      text-align: center;
+      margin-top: 10px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      color: #001019;
+    }
     .contact a:hover { transform: scale(1.1) rotate(-2deg); box-shadow: 0 6px 20px rgba(0,208,255,0.6), 0 0 10px rgba(56,255,154,0.4); }
 
     /* Modal */
@@ -94,16 +139,19 @@
     #modal.show .modal-conteudo { transform: translateY(0); }
     .fechar { position:absolute; top:10px; right:15px; cursor:pointer; font-size:20px; }
 
-    @media(min-width:860px){header{flex-wrap:nowrap}nav{margin-top:0}}
-    @media(min-width:1024px){.hero .title{font-size:42px}}
+    /* Partículas */
+    .particle { position:absolute; width:4px; height:4px; background: rgba(0,208,255,0.7); border-radius:50%; pointer-events:none; animation: float 6s linear infinite; }
+    @keyframes float { 0%{transform:translateY(0) translateX(0);opacity:1}50%{transform:translateY(-30px) translateX(20px);opacity:0.5}100%{transform:translateY(0) translateX(0);opacity:1} }
+
+    @media(min-width:860px){header{flex-wrap:nowrap}nav{margin-top:0} }
+    @media(min-width:1024px){.hero .title{font-size:42px} }
   </style>
 </head>
 <body>
 <div class="wrap">
-  <!-- Header com logo imagem -->
   <header>
     <div class="logo-animated">
-      <img src="assets/logo_site.png" alt="Logo da Si.Axis">
+      <img src="assets/logo_site.png" alt="Logo da Si.Axis" class="logo-img">
       <div class="small">Tecnologia • Inteligência Artificial</div>
     </div>
     <nav>
@@ -114,7 +162,22 @@
     </nav>
   </header>
 
-  <!-- Hero -->
+  <!-- Redes sociais -->
+  <div class="social-buttons">
+    <a href="https://www.youtube.com/@Si-Axis" target="_blank" class="social-btn">
+      <img src="assets/icons/youtube.svg" alt="YouTube">
+    </a>
+    <a href="https://www.instagram.com" target="_blank" class="social-btn">
+      <img src="assets/icons/instagram.svg" alt="Instagram">
+    </a>
+    <a href="https://twitter.com" target="_blank" class="social-btn">
+      <img src="assets/icons/x.svg" alt="X">
+    </a>
+    <a href="https://wa.me/5511949354732" target="_blank" class="social-btn">
+      <img src="assets/icons/whatsapp.svg" alt="WhatsApp">
+    </a>
+  </div>
+
   <main>
     <section id="home" class="hero">
       <div class="hero-bg"></div>
@@ -124,12 +187,7 @@
         <div class="hero-actions">
           <button class="btn btn-primary" onclick="document.location.hash='#projetos'">Conhecer o projeto</button>
           <a href="https://go.hotmart.com/O101872807C" target="_blank" class="btn-ebook">Comprar e-book</a>
-          <!-- Botões redes sociais -->
-          <a href="https://www.instagram.com" target="_blank" class="btn-social btn-instagram">Instagram</a>
-          <a href="https://www.facebook.com" target="_blank" class="btn-social btn-facebook">Facebook</a>
-          <a href="https://twitter.com" target="_blank" class="btn-social btn-x">X</a>
-          <a href="https://wa.me/5511949354732" target="_blank" class="btn-social btn-whatsapp">WhatsApp</a>
-          <a href="https://www.youtube.com/@Si-Axis" target="_blank" class="btn-social btn-youtube">YouTube</a>
+          <a href="https://www.youtube.com/@Si-Axis" target="_blank" class="btn-youtube">&#9658; YouTube</a>
         </div>
 
         <div class="cards">
@@ -201,7 +259,21 @@
 </div>
 
 <script>
-  // Accordion
+  // Partículas e animação logo
+  window.addEventListener("DOMContentLoaded", () => {
+    const hero = document.querySelector('.hero');
+    for(let i=0;i<50;i++){
+      const p = document.createElement('div');
+      p.className='particle';
+      p.style.left=Math.random()*100+'%';
+      p.style.top=Math.random()*100+'%';
+      p.style.width=p.style.height=(Math.random()*4+2)+'px';
+      p.style.animationDuration=(Math.random()*5+4)+'s';
+      hero.appendChild(p);
+    }
+  });
+
+  // Accordion cards
   document.querySelectorAll('.btn-saiba-mais').forEach(btn => {
     btn.addEventListener('click', () => {
       const resumo = btn.nextElementSibling;
