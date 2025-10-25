@@ -1,173 +1,147 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Si-Axis — Tecnologia e Aprendizado Prático</title>
-<meta name="description" content="Si-Axis oferece conteúdos práticos sobre hardware, desempenho e inteligência artificial para iniciantes e entusiastas.">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Si-Axis</title>
 <style>
-:root {
-  --bg: #0b0f14;
-  --card: #0f1720;
-  --muted: #9aa6b2;
-  --accent: #00d0ff;
-  --accent-2: #38ff9a;
-  --icon-blue: #2196F3;
-  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
-}
+  /* ===== FONTE E CORES ===== */
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background: #0d1117; /* mantendo o fundo atual */
+    color: #f0f0f0;
+  }
 
-*{box-sizing:border-box;margin:0;padding:0;}
-html, body{height:100%;background:var(--bg);color:#e6f0f6;line-height:1.5;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;overflow-x:hidden;}
-a{text-decoration:none;color:inherit;}
-.wrap{max-width:1100px;margin:0 auto;padding:28px;position:relative;text-align:center;}
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
 
-/* Header */
-header{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;padding:10px 20px;position:relative;z-index:2;}
-.logo-animated svg{width:220px;max-width:100%;height:auto;}
-.si,.axis{opacity:0;transform:translateY(-10px);transition:all 0.6s ease;}
-.si.show,.axis.show{opacity:1;transform:translateY(0);animation:glow 2s infinite alternate;}
-@keyframes glow{
-  0%{fill-opacity:.7;filter:drop-shadow(0 0 6px currentColor);}
-  50%{fill-opacity:1;filter:drop-shadow(0 0 12px currentColor);}
-  100%{fill-opacity:.8;filter:drop-shadow(0 0 6px currentColor);}
-}
-.logo-animated .small{font-size:14px;color:#9aa6b2;margin-top:4px;}
-nav{display:flex;gap:18px;flex-wrap:wrap;margin-top:10px;justify-content:center;}
-nav a{font-weight:600;color:#9aa6b2;transition:color 0.2s;}
-nav a:hover{color:var(--accent);}
+  /* ===== CONTAINER PRINCIPAL ===== */
+  .container {
+    max-width: 1200px; /* mais espaço no desktop */
+    margin: 0 auto;
+    padding: 20px;
+    box-sizing: border-box;
+  }
 
-/* Hero */
-.hero{position:relative;display:grid;grid-template-columns:1fr;gap:24px;margin:48px 0;align-items:center;min-height:500px;overflow:hidden;}
-.hero-bg{position:absolute;top:0;left:0;width:100%;height:100%;background:url('https://images.unsplash.com/photo-1616587892085-3b85d42066ef?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MjA3fDB8MXxzZWFyY2h8MXx8Y2lyY3VpdCUyMGNpcmN1aXR8ZW58MHx8fHwxNjkwMzU2OTQ5&ixlib=rb-4.0.3&q=80&w=1080') no-repeat center center/cover;z-index:0;overflow:hidden;}
-.hero-content{position:relative;z-index:1;}
-.hero .title{font-size:34px;font-weight:800;margin-bottom:8px;}
-.hero p{color:var(--muted);}
-.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin:18px auto;justify-content:center;}
-.btn-ebook{display:inline-block;padding:14px 28px;border-radius:12px;background:linear-gradient(90deg,#00d0ff,#0077ff);color:#fff;font-weight:800;font-size:18px;text-align:center;box-shadow:0 6px 20px rgba(0,0,0,0.6);transition:all 0.25s ease-in-out;}
-.btn-ebook:hover{transform:scale(1.08);box-shadow:0 10px 25px rgba(0,0,0,0.8);background:linear-gradient(90deg,#38caff,#005ce6);}
+  /* ===== BARRA LATERAL DE ÍCONES ===== */
+  .sidebar {
+    position: relative; /* rola junto com o conteúdo */
+    width: 60px;
+    margin-left: 20px; /* mantendo 2cm de margem aprox */
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
 
-/* Social Icons */
-.social-icons{display:flex;align-items:center;gap:18px;margin:20px auto;justify-content:center;}
-.social-icons a{display:inline-flex;align-items:center;justify-content:center;}
-.social-icons svg{width:36px;height:36px;fill:var(--icon-blue);transition:transform 0.3s, fill 0.3s;}
-.social-icons svg:hover{transform:scale(1.2);fill:var(--accent);}
+  .sidebar a img {
+    width: 40px;
+    transition: transform 0.2s ease;
+  }
 
-/* Cards */
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:24px;}
-.card{background:var(--card);padding:18px;border-radius:14px;box-shadow:0 6px 20px rgba(0,0,0,0.6);transition:transform 0.2s;}
-.card:hover{transform:translateY(-5px);}
-.small{font-size:13px;color:var(--muted);}
-section{margin:44px 0;}
-h2{font-size:24px;margin-bottom:12px;}
+  .sidebar a img:hover {
+    transform: scale(1.2);
+  }
 
-/* Accordion / Resumo */
-.resumo{max-height:0;overflow:hidden;transition:max-height 0.3s ease;padding:0 10px;}
-.resumo.show{max-height:500px;padding:10px;}
-.btn-modal{margin-top:10px;}
+  /* ===== SEÇÕES ===== */
+  section {
+    margin-bottom: 80px;
+    padding: 20px;
+    box-sizing: border-box;
+  }
 
-/* Contact Button */
-.contact a{display:inline-block;padding:12px 20px;border-radius:12px;font-weight:800;font-size:16px;text-align:center;margin-top:10px;transition:transform 0.3s ease,box-shadow 0.3s ease;background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#001019;}
-.contact a:hover{transform:scale(1.1) rotate(-2deg);box-shadow:0 6px 20px rgba(0,208,255,0.6),0 0 10px rgba(56,255,154,0.4);}
+  /* ===== E-BOOK ===== */
+  .ebook {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+  }
 
-/* Modal */
-#modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.7);z-index:10;opacity:0;transition:opacity 0.3s ease;}
-#modal.show{display:block;opacity:1;}
-.modal-conteudo{background:#fff;margin:10% auto;padding:20px;width:90%;max-width:500px;position:relative;border-radius:12px;color:#001;transform:translateY(-20px);transition:transform 0.3s ease;}
-#modal.show .modal-conteudo{transform:translateY(0);}
-.fechar{position:absolute;top:10px;right:15px;cursor:pointer;font-size:20px;}
+  .ebook a {
+    display: inline-block;
+    padding: 12px 24px;
+    background: #1f6feb;
+    color: #fff;
+    border-radius: 8px;
+    transition: background 0.2s ease, transform 0.2s ease;
+  }
 
-/* Partículas */
-.particle{position:absolute;width:4px;height:4px;background:rgba(0,208,255,0.7);border-radius:50%;pointer-events:none;animation:float 6s linear infinite;}
-@keyframes float{
-  0%{transform:translateY(0) translateX(0);opacity:1}
-  50%{transform:translateY(-30px) translateX(20px);opacity:0.5}
-  100%{transform:translateY(0) translateX(0) opacity:1}
-}
+  .ebook a:hover {
+    background: #2563eb;
+    transform: scale(1.05);
+  }
 
-/* Footer */
-footer{text-align:center;padding:18px 0;font-size:14px;color:var(--muted);}
+  /* ===== RESPONSIVIDADE ===== */
+  @media (max-width: 1024px) {
+    .container {
+      max-width: 90%;
+    }
+  }
 
-/* Responsividade */
-@media(min-width:860px){header{flex-wrap:nowrap}nav{margin-top:0}}
-@media(min-width:1024px){.hero .title{font-size:42px}}
-@media(max-width:600px){.btn-ebook{width:100%;text-align:center}.social-icons{justify-content:center}}
+  @media (max-width: 768px) {
+    .sidebar {
+      flex-direction: row;
+      justify-content: center;
+      margin: 0 0 20px 0;
+      width: 100%;
+    }
+    .sidebar a img {
+      width: 35px;
+    }
+    section {
+      margin-bottom: 50px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .sidebar a img {
+      width: 30px;
+    }
+    .ebook a {
+      padding: 10px 20px;
+    }
+  }
+
 </style>
 </head>
 <body>
-<div class="wrap">
-<header>
-  <div class="logo-animated">
-    <svg viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg">
-      <text class="si" x="0" y="40" font-family="Inter, Arial" font-size="40" font-weight="900" fill="#00d0ff">Si</text>
-      <text class="axis" x="60" y="40" font-family="Inter, Arial" font-size="42" font-weight="900" fill="#38ff9a">-Axis</text>
-    </svg>
-    <div class="small">Tecnologia • Inteligência Artificial</div>
+<div class="container">
+
+  <!-- ===== BARRA LATERAL DE ÍCONES ===== -->
+  <div class="sidebar">
+    <a href="#" title="YouTube"><img src="https://img.icons8.com/ios-filled/50/ffffff/youtube-play.png" alt="YouTube"></a>
+    <a href="#" title="Instagram"><img src="https://img.icons8.com/ios-filled/50/ffffff/instagram-new.png" alt="Instagram"></a>
+    <a href="#" title="X"><img src="https://img.icons8.com/ios-filled/50/ffffff/twitter.png" alt="X"></a>
+    <a href="#" title="WhatsApp"><img src="https://img.icons8.com/ios-filled/50/ffffff/whatsapp.png" alt="WhatsApp"></a>
   </div>
-  <nav>
-    <a href="#home">Home</a>
-    <a href="#sobre">Sobre</a>
-    <a href="#projetos">Projetos</a>
-    <a href="#contato">Contato</a>
-  </nav>
-</header>
 
-<main>
-<section id="home" class="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-content">
-    <h1 class="title">Onde tecnologia encontra aprendizado</h1>
-    <p>Conteúdos práticos sobre hardware, desempenho de PCs e inteligência artificial, em linguagem acessível para iniciantes.</p>
-    <div class="hero-actions">
-      <a href="https://go.hotmart.com/O101872807C" target="_blank" class="btn-ebook">E-book</a>
-    </div>
-    <div class="social-icons">
-      <a href="https://www.youtube.com/@Si-Axis" target="_blank"><svg viewBox="0 0 24 24"><path d="M23.498 6.186a2.82 2.82 0 0 0-1.987-1.987C19.825 4 12 4 12 4s-7.825 0-9.511.199A2.82 2.82 0 0 0 .502 6.186 29.608 29.608 0 0 0 0 12a29.608 29.608 0 0 0 .502 5.814 2.82 2.82 0 0 0 1.987 1.987C4.175 20 12 20 12 20s7.825 0 9.511-.199a2.82 2.82 0 0 0 1.987-1.987A29.608 29.608 0 0 0 24 12a29.608 29.608 0 0 0-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
-      <a href="https://www.instagram.com/SEU_USUARIO" target="_blank"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.849.07 1.366.062 2.633.34 3.608 1.314.975.975 1.252 2.242 1.314 3.608.058 1.265.07 1.645.07 4.849s-.012 3.584-.07 4.849c-.062 1.366-.34 2.633-1.314 3.608-.975.975-2.242 1.252-3.608 1.314-1.265.058-1.645.07-4.849.07s-3.584-.012-4.849-.07c-1.366-.062-2.633-.34-3.608-1.314-.975-.975-1.252-2.242-1.314-3.608-.058-1.265-.07-1.645-.07-4.849s.012-3.584.07-4.849c.062-1.366.34-2.633 1.314-3.608.975-.975 2.242-1.252 3.608-1.314C8.416 2.175 8.796 2.163 12 2.163zm0-2.163C8.741 0 8.332.012 7.052.07 5.78.127 4.645.407 3.678 1.374 2.711 2.341 2.431 3.476 2.374 4.748.012 8.332 0 8.741 0 12s.012 3.668.07 4.948c.062 1.366.34 2.633 1.314 3.608.975.975 2.242 1.252 3.608 1.314C8.332 23.988 8.741 24 12 24s3.668-.012 4.948-.07c1.366-.062 2.633-.34 3.608-1.314.975-.975 1.252-2.242 1.314-3.608.058-1.265.07-1.645.07-4.948s-.012-3.668-.07-4.948c-.062-1.366-.34-2.633-1.314-3.608-.975-.975-2.242-1.252-3.608-1.314C15.668.012 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zm0 10.162a3.999 3.999 0 1 1 0-7.998 3.999 3.999 0 0 1 0 7.998zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg></a>
-    </div>
-  </div>
-</section>
+  <!-- ===== HOME ===== -->
+  <section id="home">
+    <h1>Bem-vindo ao Si-Axis</h1>
+    <p>Seu portal de tecnologia, IA e muito mais.</p>
+  </section>
 
-<section id="sobre">
-  <h2>Sobre Si-Axis</h2>
-  <p>Si-Axis é uma plataforma que une tecnologia, inteligência artificial e aprendizado prático, oferecendo conteúdos acessíveis para todos os níveis de conhecimento.</p>
-</section>
+  <!-- ===== E-BOOK ===== -->
+  <section id="ebook" class="ebook">
+    <h2>E-book: A Era da Computação</h2>
+    <p>Descubra os segredos da tecnologia moderna e o futuro da inteligência artificial.</p>
+    <a href="#">Adquira o seu na Hotmart</a>
+  </section>
 
-<section id="projetos">
-  <h2>Projetos</h2>
-  <div class="cards">
-    <div class="card">
-      <h3>Hardware</h3>
-      <p class="small">Tutoriais e análises sobre desempenho de computadores e upgrades.</p>
-    </div>
-    <div class="card">
-      <h3>Inteligência Artificial</h3>
-      <p class="small">Exemplos práticos e conceitos aplicáveis em projetos do dia a dia.</p>
-    </div>
-    <div class="card">
-      <h3>E-books</h3>
-      <p class="small">Materiais digitais completos para estudo e aprofundamento.</p>
-    </div>
-  </div>
-</section>
+  <!-- ===== OUTRAS SEÇÕES (exemplo) ===== -->
+  <section id="sobre">
+    <h2>Sobre o Projeto</h2>
+    <p>O Si-Axis nasceu com a missão de unir conhecimento, tecnologia e inovação de forma acessível.</p>
+  </section>
 
-<section id="contato">
-  <h2>Contato</h2>
-  <div class="contact">
-    <a href="mailto:contato@siaxis.com">Enviar E-mail</a>
-  </div>
-</section>
-</main>
-
-<footer>
-  &copy; 2025 Si-Axis. Todos os direitos reservados.
-</footer>
+  <section id="contato">
+    <h2>Contato</h2>
+    <p>Entre em contato conosco através das redes sociais ou pelo formulário abaixo.</p>
+  </section>
 
 </div>
-
-<script>
-// Animação do logo
-window.addEventListener('load',()=>{document.querySelector('.si').classList.add('show');document.querySelector('.axis').classList.add('show');});
-</script>
 </body>
 </html>
