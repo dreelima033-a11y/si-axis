@@ -23,39 +23,12 @@
     padding: 100px 20px;
   }
 
-  /* Título com glow pulsante branco */
   h1 {
     font-size: 4em;
-    color: #ffffff;
+    background: linear-gradient(90deg, #00f0ff, #9900ff);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     margin-bottom: 20px;
-    text-shadow: 
-      0 0 5px #ffffff,
-      0 0 10px #ffffff,
-      0 0 20px #ffffff;
-    animation: glowTitle 2s infinite alternate;
-  }
-
-  @keyframes glowTitle {
-    0% {
-      text-shadow: 
-        0 0 5px #ffffff,
-        0 0 10px #ffffff,
-        0 0 20px #ffffff;
-    }
-    50% {
-      text-shadow: 
-        0 0 10px #ffffff,
-        0 0 20px #ffffff,
-        0 0 30px #ffffff;
-    }
-    100% {
-      text-shadow: 
-        0 0 5px #ffffff,
-        0 0 10px #ffffff,
-        0 0 20px #ffffff;
-    }
   }
 
   p {
@@ -64,7 +37,7 @@
     margin-bottom: 50px;
   }
 
-  /* Ícones sociais com glow pulsante em dois tons de azul */
+  /* Ícones sociais com glow pulsante */
   .social-icons {
     display: flex;
     justify-content: center;
