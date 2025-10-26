@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Si-Axis</title>
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
-  /* Reset básico */
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
     font-family: 'Orbitron', sans-serif;
@@ -16,7 +16,6 @@
     height: 100vh;
   }
 
-  /* Container central */
   .container {
     position: relative;
     z-index: 1;
@@ -38,7 +37,26 @@
     margin-bottom: 50px;
   }
 
-  /* Canvas para partículas */
+  /* Ícones sociais */
+  .social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+  }
+
+  .social-icons a {
+    color: #00f0ff;
+    font-size: 2em;
+    transition: all 0.3s ease;
+    text-shadow: 0 0 10px #00f0ff, 0 0 20px #00f0ff;
+  }
+
+  .social-icons a:hover {
+    color: #fff;
+    text-shadow: 0 0 20px #9900ff, 0 0 40px #00f0ff;
+    transform: scale(1.1);
+  }
+
   canvas {
     position: absolute;
     top: 0;
@@ -54,6 +72,13 @@
 <div class="container">
   <h1>Si-Axis</h1>
   <p>Onde tecnologia encontra aprendizado</p>
+
+  <div class="social-icons">
+    <a href="#" title="Hotmart"><i class="fa-solid fa-fire"></i></a>
+    <a href="#" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+    <a href="#" title="X"><i class="fa-brands fa-x-twitter"></i></a>
+    <a href="#" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+  </div>
 </div>
 
 <script>
@@ -62,7 +87,6 @@ const ctx = canvas.getContext('2d');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
-// Partículas e linhas de energia
 const particles = [];
 const particleCount = 80;
 
@@ -80,7 +104,6 @@ function draw() {
   ctx.fillStyle = 'rgba(0, 0, 0, 0.15)';
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-  // Desenha partículas
   for (let i = 0; i < particles.length; i++) {
     let p = particles[i];
     ctx.beginPath();
@@ -88,17 +111,14 @@ function draw() {
     ctx.fillStyle = '#00f0ff';
     ctx.fill();
 
-    // Move partículas
     p.x += p.vx;
     p.y += p.vy;
 
-    // Reaparece se sair da tela
     if (p.x > canvas.width) p.x = 0;
     if (p.x < 0) p.x = canvas.width;
     if (p.y > canvas.height) p.y = 0;
     if (p.y < 0) p.y = canvas.height;
 
-    // Linhas de energia
     for (let j = i + 1; j < particles.length; j++) {
       let p2 = particles[j];
       let dx = p.x - p2.x;
@@ -118,7 +138,6 @@ function draw() {
 
 draw();
 
-// Responsividade
 window.addEventListener('resize', () => {
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
