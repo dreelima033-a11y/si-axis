@@ -21,7 +21,7 @@ body {
   position: relative;
   z-index: 1;
   text-align: center;
-  padding: 100px 20px 60px 20px;
+  padding: 60px 20px 40px 20px;
   animation: fadeIn 1s ease-in-out;
 }
 
@@ -51,7 +51,7 @@ p {
   font-weight: bold;
   border-radius: 8px;
   text-decoration: none;
-  margin-bottom: 60px;
+  margin-bottom: 40px;
   transition: transform 0.3s, background 0.3s;
   animation: breathe 2.5s infinite alternate;
 }
@@ -84,8 +84,8 @@ p {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 45px;
-  margin-bottom: 60px;
+  gap: 25px;
+  margin-bottom: 40px;
 }
 
 .card {
@@ -207,7 +207,7 @@ canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
 const particles = [];
-const particleCount = 72; // reduzido de 80 para 72
+const particleCount = 80;
 
 for (let i = 0; i < particleCount; i++) {
   particles.push({
@@ -254,6 +254,8 @@ function draw() {
   }
   requestAnimationFrame(draw);
 }
+
+draw();
 
 window.addEventListener('resize', () => {
   canvas.width = window.innerWidth;
