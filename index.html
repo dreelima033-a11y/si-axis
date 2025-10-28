@@ -8,12 +8,14 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
 * { margin:0; padding:0; box-sizing:border-box; }
+html, body { height:100%; }
 body {
   font-family: 'Orbitron', sans-serif;
   background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
   color: #fff;
   overflow-x: hidden;
   min-height: 100vh;
+  position: relative;
 }
 
 /* Container principal */
@@ -21,12 +23,12 @@ body {
   position: relative;
   z-index: 1;
   text-align: center;
-  padding: 60px 20px 40px 20px;
+  padding: 100px 20px 60px 20px;
 }
 
 /* Hero */
 h1 {
-  font-size: 3em;
+  font-size: 3.5em;
   background: linear-gradient(90deg, #00f0ff, #9900ff);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -34,10 +36,10 @@ h1 {
   animation: glowText 2s infinite alternate;
 }
 p {
-  font-size: 1.2em;
+  font-size: 1.3em;
   color: #fff;
-  margin-bottom: 20px;
-  animation: fadeInText 1.5s ease-in-out;
+  margin-bottom: 25px;
+  animation: fadeInText 3s ease-in-out forwards;
 }
 
 /* Botão Home */
@@ -49,9 +51,9 @@ p {
   font-weight: bold;
   border-radius: 8px;
   text-decoration: none;
-  margin-bottom: 50px;
+  margin-bottom: 60px;
   transition: transform 0.3s, background 0.3s;
-  animation: breathe 2.5s infinite alternate;
+  animation: breathe 3s infinite alternate;
 }
 .btn-home:hover {
   background: #00d4ff;
@@ -82,7 +84,7 @@ p {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 35px;
+  gap: 45px;
   margin-bottom: 60px;
 }
 .card {
@@ -90,9 +92,9 @@ p {
   border: 1px solid #00f0ff;
   border-radius: 12px;
   padding: 20px;
-  width: 240px;
-  transition: transform 0.4s, background 0.4s, box-shadow 0.4s;
-  animation: breathe 3s infinite alternate;
+  width: 230px;
+  transition: transform 0.5s, background 0.5s, box-shadow 0.5s;
+  animation: breathe 4s infinite alternate;
 }
 .card:hover {
   background: rgba(255,255,255,0.15);
@@ -104,14 +106,8 @@ p {
   font-size: 1.4em;
   color: #00f0ff;
 }
-.card ul {
-  list-style: none;
-  text-align: left;
-}
-.card ul li {
-  margin-bottom: 8px;
-  font-size: 1.05em;
-}
+.card ul { list-style: none; text-align: left; }
+.card ul li { margin-bottom: 8px; font-size: 1.05em; }
 
 /* Sobre */
 .about {
@@ -123,7 +119,7 @@ p {
   max-width: 700px;
   margin-left: auto;
   margin-right: auto;
-  animation: fadeIn 2s ease-in-out;
+  animation: breathe 5s infinite alternate;
 }
 
 /* Depoimentos */
@@ -140,7 +136,7 @@ p {
   border-radius: 12px;
   padding: 20px;
   width: 250px;
-  animation: breathe 3s infinite alternate;
+  animation: breathe 4s infinite alternate;
 }
 .testimonial p { font-size: 1em; }
 
@@ -158,7 +154,7 @@ p {
   border-radius: 12px;
   padding: 15px;
   width: 230px;
-  animation: breathe 3s infinite alternate;
+  animation: breathe 4s infinite alternate;
 }
 .blog-post h4 { margin-bottom: 10px; font-size: 1.2em; color: #00f0ff; }
 
@@ -217,17 +213,16 @@ p {
 @keyframes breathe {0%{transform:scale(1);}50%{transform:scale(1.03);}100%{transform:scale(1);}}
 
 /* Canvas */
-canvas { position:absolute; top:0; left:0; z-index:0; }
+canvas { position:fixed; top:0; left:0; width:100vw; height:100vh; z-index:0; }
 
 /* Media Queries */
 @media (max-width:768px){
-  h1{font-size:2em; margin-top:40px;}
+  h1{font-size:2.2em;}
   p{font-size:1em;}
-  .btn-home{padding:10px 18px; font-size:0.9em;}
+  .btn-home{padding:10px 20px; font-size:0.9em;}
   .social-icons a{font-size:1.5em; gap:20px;}
   .sections, .testimonials, .blog{gap:20px;}
-  .card, .testimonial, .blog-post{width:90%; margin:0 auto;}
-  .about, .contact{width:95%; padding:20px;}
+  .card, .testimonial, .blog-post, .about{width:90%;}
 }
 </style>
 </head>
@@ -249,11 +244,13 @@ canvas { position:absolute; top:0; left:0; z-index:0; }
   </div>
 </div>
 
+<!-- Sobre -->
 <div class="about">
   <h3>Sobre a Si-Axis</h3>
   <p>A Si-Axis conecta pessoas e conhecimento em tecnologia, hardware e Inteligência Artificial, oferecendo cursos práticos e comunidade ativa.</p>
 </div>
 
+<!-- Seções de Cursos e Comunidade -->
 <div class="sections">
   <div class="card">
     <h3>Cursos</h3>
@@ -271,6 +268,7 @@ canvas { position:absolute; top:0; left:0; z-index:0; }
   </div>
 </div>
 
+<!-- Depoimentos -->
 <div class="testimonials">
   <div class="testimonial">
     <p>"Aprendi muito nos cursos da Si-Axis, totalmente práticos!"</p>
@@ -280,6 +278,7 @@ canvas { position:absolute; top:0; left:0; z-index:0; }
   </div>
 </div>
 
+<!-- Blog / Novidades -->
 <div class="blog">
   <div class="blog-post">
     <h4>Novidade IA</h4>
@@ -291,6 +290,7 @@ canvas { position:absolute; top:0; left:0; z-index:0; }
   </div>
 </div>
 
+<!-- Contato -->
 <div class="contact">
   <h3>Contato</h3>
   <input type="text" placeholder="Nome">
@@ -299,46 +299,51 @@ canvas { position:absolute; top:0; left:0; z-index:0; }
   <button>Enviar</button>
 </div>
 
+<!-- WhatsApp flutuante -->
 <a href="#" class="whatsapp-float" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
 
 <script>
 const canvas = document.getElementById('background');
 const ctx = canvas.getContext('2d');
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+
+function resizeCanvas(){
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+resizeCanvas();
 
 const particles = [];
-const particleCount = 60; // mais leve para celular
+const particleCount = 72;
 
 for(let i=0;i<particleCount;i++){
   particles.push({
     x:Math.random()*canvas.width,
     y:Math.random()*canvas.height,
-    vx:(Math.random()-0.5)*0.8,
-    vy:(Math.random()-0.5)*0.8,
+    vx:(Math.random()-0.5)*1,
+    vy:(Math.random()-0.5)*1,
     size:Math.random()*2+1
   });
 }
 
 function draw(){
-  ctx.fillStyle='rgba(0,0,0,0.12)';
+  ctx.fillStyle='rgba(0,0,0,0.13)';
   ctx.fillRect(0,0,canvas.width,canvas.height);
-  
+
   for(let i=0;i<particles.length;i++){
     let p=particles[i];
     ctx.beginPath();
     ctx.arc(p.x,p.y,p.size,0,Math.PI*2);
     ctx.fillStyle='#00f0ff';
     ctx.fill();
-    
+
     p.x+=p.vx;
     p.y+=p.vy;
-    
+
     if(p.x>canvas.width)p.x=0;
     if(p.x<0)p.x=canvas.width;
     if(p.y>canvas.height)p.y=0;
     if(p.y<0)p.y=canvas.height;
-    
+
     for(let j=i+1;j<particles.length;j++){
       let p2=particles[j];
       let dx=p.x-p2.x;
@@ -355,13 +360,9 @@ function draw(){
   }
   requestAnimationFrame(draw);
 }
-
 draw();
 
-window.addEventListener('resize',()=>{
-  canvas.width=window.innerWidth;
-  canvas.height=window.innerHeight;
-});
+window.addEventListener('resize',resizeCanvas);
 </script>
 
 </body>
