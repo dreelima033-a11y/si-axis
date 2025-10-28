@@ -21,12 +21,12 @@ body {
   position: relative;
   z-index: 1;
   text-align: center;
-  padding: 100px 20px 60px 20px;
+  padding: 60px 20px 40px 20px;
 }
 
 /* Hero */
 h1 {
-  font-size: 3.5em;
+  font-size: 3em;
   background: linear-gradient(90deg, #00f0ff, #9900ff);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -34,9 +34,9 @@ h1 {
   animation: glowText 2s infinite alternate;
 }
 p {
-  font-size: 1.3em;
+  font-size: 1.2em;
   color: #fff;
-  margin-bottom: 25px;
+  margin-bottom: 20px;
   animation: fadeInText 1.5s ease-in-out;
 }
 
@@ -49,7 +49,7 @@ p {
   font-weight: bold;
   border-radius: 8px;
   text-decoration: none;
-  margin-bottom: 60px;
+  margin-bottom: 50px;
   transition: transform 0.3s, background 0.3s;
   animation: breathe 2.5s infinite alternate;
 }
@@ -82,7 +82,7 @@ p {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 45px;
+  gap: 35px;
   margin-bottom: 60px;
 }
 .card {
@@ -90,7 +90,7 @@ p {
   border: 1px solid #00f0ff;
   border-radius: 12px;
   padding: 20px;
-  width: 230px;
+  width: 240px;
   transition: transform 0.4s, background 0.4s, box-shadow 0.4s;
   animation: breathe 3s infinite alternate;
 }
@@ -216,16 +216,18 @@ p {
 @keyframes glowText { 0%{text-shadow:0 0 10px #00ffff;}50%{text-shadow:0 0 20px #00ffff;}100%{text-shadow:0 0 10px #00ffff;} }
 @keyframes breathe {0%{transform:scale(1);}50%{transform:scale(1.03);}100%{transform:scale(1);}}
 
+/* Canvas */
 canvas { position:absolute; top:0; left:0; z-index:0; }
 
 /* Media Queries */
 @media (max-width:768px){
-  h1{font-size:2.5em;}
-  p{font-size:1.1em;}
-  .btn-home{padding:10px 20px; font-size:0.9em;}
+  h1{font-size:2em; margin-top:40px;}
+  p{font-size:1em;}
+  .btn-home{padding:10px 18px; font-size:0.9em;}
   .social-icons a{font-size:1.5em; gap:20px;}
   .sections, .testimonials, .blog{gap:20px;}
-  .card, .testimonial, .blog-post{width:90%;}
+  .card, .testimonial, .blog-post{width:90%; margin:0 auto;}
+  .about, .contact{width:95%; padding:20px;}
 }
 </style>
 </head>
@@ -247,13 +249,11 @@ canvas { position:absolute; top:0; left:0; z-index:0; }
   </div>
 </div>
 
-<!-- Sobre -->
 <div class="about">
   <h3>Sobre a Si-Axis</h3>
   <p>A Si-Axis conecta pessoas e conhecimento em tecnologia, hardware e Inteligência Artificial, oferecendo cursos práticos e comunidade ativa.</p>
 </div>
 
-<!-- Seções de Cursos e Comunidade -->
 <div class="sections">
   <div class="card">
     <h3>Cursos</h3>
@@ -271,7 +271,6 @@ canvas { position:absolute; top:0; left:0; z-index:0; }
   </div>
 </div>
 
-<!-- Depoimentos -->
 <div class="testimonials">
   <div class="testimonial">
     <p>"Aprendi muito nos cursos da Si-Axis, totalmente práticos!"</p>
@@ -281,7 +280,6 @@ canvas { position:absolute; top:0; left:0; z-index:0; }
   </div>
 </div>
 
-<!-- Blog / Novidades -->
 <div class="blog">
   <div class="blog-post">
     <h4>Novidade IA</h4>
@@ -293,7 +291,6 @@ canvas { position:absolute; top:0; left:0; z-index:0; }
   </div>
 </div>
 
-<!-- Contato -->
 <div class="contact">
   <h3>Contato</h3>
   <input type="text" placeholder="Nome">
@@ -302,7 +299,6 @@ canvas { position:absolute; top:0; left:0; z-index:0; }
   <button>Enviar</button>
 </div>
 
-<!-- WhatsApp flutuante -->
 <a href="#" class="whatsapp-float" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
 
 <script>
@@ -312,20 +308,20 @@ canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
 const particles = [];
-const particleCount = 72; // um pouco menos
+const particleCount = 60; // mais leve para celular
 
 for(let i=0;i<particleCount;i++){
   particles.push({
     x:Math.random()*canvas.width,
     y:Math.random()*canvas.height,
-    vx:(Math.random()-0.5)*1,
-    vy:(Math.random()-0.5)*1,
+    vx:(Math.random()-0.5)*0.8,
+    vy:(Math.random()-0.5)*0.8,
     size:Math.random()*2+1
   });
 }
 
 function draw(){
-  ctx.fillStyle='rgba(0,0,0,0.13)'; // fundo um pouco mais leve
+  ctx.fillStyle='rgba(0,0,0,0.12)';
   ctx.fillRect(0,0,canvas.width,canvas.height);
   
   for(let i=0;i<particles.length;i++){
