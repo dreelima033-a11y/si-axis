@@ -21,7 +21,7 @@ body {
   position: relative;
   z-index: 1;
   text-align: center;
-  padding: 60px 20px 40px 20px;
+  padding: 100px 20px 60px 20px;
   animation: fadeIn 1s ease-in-out;
 }
 
@@ -51,7 +51,7 @@ p {
   font-weight: bold;
   border-radius: 8px;
   text-decoration: none;
-  margin-bottom: 40px;
+  margin-bottom: 60px;
   transition: transform 0.3s, background 0.3s;
   animation: breathe 2.5s infinite alternate;
 }
@@ -84,8 +84,8 @@ p {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 25px;
-  margin-bottom: 40px;
+  gap: 45px;
+  margin-bottom: 60px;
 }
 
 .card {
@@ -179,7 +179,7 @@ canvas {
     <a href="https://www.youtube.com/@Si-Axis" target="_blank" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
     <a href="#" target="_blank" title="X"><i class="fa-brands fa-x-twitter"></i></a>
     <a href="#" target="_blank" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
-    <a href="https://wa.me/5511949354732" target="_blank" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+    <a href="#" target="_blank" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
   </div>
 
   <div class="sections">
@@ -207,7 +207,7 @@ canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
 const particles = [];
-const particleCount = 80;
+const particleCount = 72; // reduzido de 80 para 72
 
 for (let i = 0; i < particleCount; i++) {
   particles.push({
@@ -254,8 +254,6 @@ function draw() {
   }
   requestAnimationFrame(draw);
 }
-
-draw();
 
 window.addEventListener('resize', () => {
   canvas.width = window.innerWidth;
