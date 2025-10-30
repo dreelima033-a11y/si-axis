@@ -122,32 +122,7 @@ p {
   animation: breathe 5s infinite alternate;
 }
 
-/* Depoimentos */
-.testimonials {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 30px;
-  margin-bottom: 60px;
-}
-.testimonial {
-  background: rgba(255,255,255,0.05);
-  border: 1px solid #00f0ff;
-  border-radius: 12px;
-  padding: 20px;
-  width: 250px;
-  animation: breathe 4s infinite alternate;
-}
-.testimonial p { font-size: 1em; }
-
 /* Blog / Novidades */
-.blog {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 30px;
-  margin-bottom: 60px;
-}
 .blog-post {
   background: rgba(255,255,255,0.05);
   border: 1px solid #00f0ff;
@@ -201,6 +176,16 @@ p {
 }
 .whatsapp-float:hover { transform: scale(1.2); }
 
+/* Rodapé */
+.footer {
+  text-align: center;
+  padding: 15px 0;
+  color: #00f0ff;
+  font-size: 0.9em;
+  opacity: 0.7;
+}
+.footer:hover { opacity: 1; }
+
 /* Animações */
 @keyframes glowPulse {
   0% { text-shadow: 0 0 5px #00ffff,0 0 10px #00d4ff,0 0 20px #00ffff,0 0 30px #00d4ff,0 0 40px #00ffff; }
@@ -221,8 +206,8 @@ canvas { position:fixed; top:0; left:0; width:100vw; height:100vh; z-index:0; }
   p{font-size:1em;}
   .btn-home{padding:10px 20px; font-size:0.9em;}
   .social-icons a{font-size:1.5em; gap:20px;}
-  .sections, .testimonials, .blog{gap:20px;}
-  .card, .testimonial, .blog-post, .about{width:90%;}
+  .sections, .blog-post, .card{gap:20px;}
+  .card, .blog-post, .about{width:90%;}
 }
 </style>
 </head>
@@ -240,7 +225,7 @@ canvas { position:fixed; top:0; left:0; width:100vw; height:100vh; z-index:0; }
     <a href="https://www.youtube.com/@Si-Axis" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
     <a href="#" title="X"><i class="fa-brands fa-x-twitter"></i></a>
     <a href="#" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
-    <a href="https://wa.me/55 11 949354732" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+    <a href="https://wa.me/5511949354732" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
   </div>
 </div>
 
@@ -249,19 +234,14 @@ canvas { position:fixed; top:0; left:0; width:100vw; height:100vh; z-index:0; }
   <h3>Sobre a Si-Axis</h3>
   <p>“Na Si-Axis, você aprende tecnologia, hardware e Inteligência Artificial de forma prática e aplicada. Transforme conhecimento em habilidade, desenvolva competências sólidas e crie soluções que respeitam o meio ambiente, ajudando a construir um futuro mais sustentável.”</p>
 </div>
-    </ul>
-  </div>
+
+<!-- Cursos / Blog -->
+<div class="sections">
   <div class="card">
-    <h3>Comunidade</h3>
+    <h3>Curso Montagem</h3>
     <ul>
-      <li>Troque ideias</li>
-      <li>Compartilhe experiências</li>
+      <li>Passo a passo de montagem e manutenção de PCs</li>
     </ul>
-  </div>
-</div>
-  <div class="blog-post">
-    <h4>Curso Montagem</h4>
-    <p>Passo a passo de montagem e manutenção de PCs.</p>
   </div>
 </div>
 
@@ -276,6 +256,11 @@ canvas { position:fixed; top:0; left:0; width:100vw; height:100vh; z-index:0; }
 
 <!-- WhatsApp flutuante -->
 <a href="#" class="whatsapp-float" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+
+<!-- Rodapé -->
+<footer class="footer">
+  <p>@Si-Axis</p>
+</footer>
 
 <script>
 const canvas = document.getElementById('background');
@@ -341,20 +326,4 @@ window.addEventListener('resize',resizeCanvas);
 </script>
 
 </body>
-  .footer {
-  text-align: center; /* centraliza horizontalmente */
-  padding: 15px 0;
-  color: #00f0ff;
-  font-size: 0.9em;
-  opacity: 0.7;
-}
-.footer:hover {
-  opacity: 1;
-}
-
-  <!-- Rodapé -->
-<footer class="footer">
-  <p>@Si-Axis</p>
-</footer>
-
 </html>
