@@ -7,216 +7,236 @@
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
-* { margin:0; padding:0; box-sizing:border-box; }
-html, body { height:100%; }
-body {
-  font-family: 'Orbitron', sans-serif;
-  background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
-  color: #fff;
-  overflow-x: hidden;
-  min-height: 100vh;
-  position: relative;
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{height:100%;}
+body{
+  font-family:'Orbitron',sans-serif;
+  background:linear-gradient(135deg,#0f0c29,#302b63,#24243e);
+  color:#fff;
+  overflow-x:hidden;
+  min-height:100vh;
+  position:relative;
 }
-
-/* Menu fixo */
-nav {
-  position: fixed;
-  top:0;
-  left:0;
-  width:100%;
-  background: rgba(0,0,0,0.6);
-  padding: 15px 30px;
-  display: flex;
-  justify-content: flex-end;
-  gap: 25px;
-  z-index: 2;
-  border-bottom: 1px solid #00f0ff;
-}
-nav a {
-  color: #00f0ff;
-  text-decoration: none;
-  font-weight: bold;
-  transition: 0.3s;
-}
-nav a:hover { color: #fff; transform: scale(1.1); }
 
 /* Container principal */
-.container {
-  position: relative;
-  z-index: 1;
-  text-align: center;
-  padding: 120px 20px 60px 20px;
+.container{
+  position:relative;
+  z-index:1;
+  text-align:center;
+  padding:100px 20px 60px 20px;
 }
 
 /* Hero */
-h1 {
-  font-size: 3.5em;
-  background: linear-gradient(90deg, #00f0ff, #9900ff);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  margin-bottom: 15px;
-  animation: glowText 2s infinite alternate;
+h1{
+  font-size:3.5em;
+  background:linear-gradient(90deg,#00f0ff,#9900ff);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  margin-bottom:15px;
+  animation:glowText 2s infinite alternate;
 }
-p {
-  font-size: 1.3em;
-  color: #fff;
-  margin-bottom: 25px;
-  animation: fadeInText 3s ease-in-out forwards;
+p{
+  font-size:1.3em;
+  color:#fff;
+  margin-bottom:25px;
+  animation:fadeInText 3s ease-in-out forwards;
 }
 
 /* Botão principal */
-.btn-home {
-  display: inline-block;
-  padding: 12px 25px;
-  background: #00f0ff;
-  color: #000;
-  font-weight: bold;
-  border-radius: 8px;
-  text-decoration: none;
-  margin-bottom: 60px;
-  transition: transform 0.3s, background 0.3s;
-  animation: breathe 3s infinite alternate;
+.btn-home{
+  display:inline-block;
+  padding:14px 28px;
+  background:#00f0ff;
+  color:#000;
+  font-weight:bold;
+  border-radius:8px;
+  text-decoration:none;
+  margin-bottom:60px;
+  transition:transform .3s,background .3s;
+  animation:breathe 3s infinite alternate;
 }
-.btn-home:hover {
-  background: #00d4ff;
-  transform: scale(1.1);
+.btn-home:hover{background:#00d4ff;transform:scale(1.1);}
+
+/* Ícones sociais */
+.social-icons{
+  display:flex;
+  justify-content:center;
+  gap:35px;
+  margin-bottom:40px;
 }
+.social-icons a{
+  font-size:2.3em;
+  transition:all .4s ease-in-out;
+  color:#00ffff;
+  text-shadow:0 0 5px #00ffff,0 0 10px #00d4ff,0 0 20px #00ffff,0 0 30px #00d4ff,0 0 40px #00ffff;
+  animation:glowPulse 2s infinite alternate;
+}
+.social-icons a:hover{color:#fff;transform:scale(1.25) rotate(8deg);}
 
 /* Seções */
-.sections, .diferenciais, .testimonials {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 30px;
-  margin-bottom: 60px;
+.sections,.diferenciais{
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:45px;
+  margin-bottom:60px;
 }
-.card, .testimonial {
-  background: rgba(255,255,255,0.05);
-  border: 1px solid #00f0ff;
-  border-radius: 12px;
-  padding: 20px;
-  width: 230px;
-  transition: transform 0.5s, background 0.5s, box-shadow 0.5s;
-  animation: breathe 4s infinite alternate;
+.card{
+  background:rgba(255,255,255,0.06);
+  border:1px solid #00f0ff;
+  border-radius:12px;
+  padding:20px;
+  width:240px;
+  transition:transform .5s,background .5s,box-shadow .5s;
+  animation:breathe 4s infinite alternate;
+  opacity:0;
+  transform:translateY(20px);
 }
-.card:hover, .testimonial:hover {
-  background: rgba(255,255,255,0.15);
-  transform: translateY(-10px);
-  box-shadow: 0 0 15px rgba(0,240,255,0.5);
+.card.show{
+  opacity:1;
+  transform:translateY(0);
+  transition:all .8s ease-out;
 }
-.card h3, .testimonial h3 { margin-bottom: 12px; font-size: 1.3em; color: #00f0ff; }
-.card ul { list-style: none; text-align: left; }
-.card ul li { margin-bottom: 8px; font-size: 1.05em; }
+.card:hover{
+  background:rgba(255,255,255,0.15);
+  transform:translateY(-10px);
+  box-shadow:0 0 20px rgba(0,240,255,0.6);
+}
+.card h3{margin-bottom:12px;font-size:1.4em;color:#00f0ff;}
+.card ul{list-style:none;text-align:left;}
+.card ul li{margin-bottom:8px;font-size:1.05em;}
 
 /* Sobre */
-.about {
-  background: rgba(255,255,255,0.05);
-  border-radius: 12px;
-  padding: 25px;
-  margin-bottom: 60px;
-  width: 90%;
-  max-width: 700px;
-  margin-left: auto;
-  margin-right: auto;
-  animation: breathe 5s infinite alternate;
+.about{
+  background:rgba(255,255,255,0.05);
+  border-radius:12px;
+  padding:25px;
+  margin-bottom:60px;
+  width:90%;
+  max-width:700px;
+  margin-left:auto;
+  margin-right:auto;
+  animation:breathe 5s infinite alternate;
+  opacity:0;
+  transform:translateY(20px);
 }
-
-/* Diferenciais */
-.diferenciais .card {
-  width: 200px;
-  text-align: center;
+.about.show{
+  opacity:1;
+  transform:translateY(0);
+  transition:all .8s ease-out;
 }
 
 /* Depoimentos */
-.testimonials .testimonial p { font-size: 1em; }
+.testimonials{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:30px;
+  margin-bottom:60px;
+}
+.testimonial{
+  background:rgba(255,255,255,0.05);
+  border:1px solid #00f0ff;
+  border-radius:12px;
+  padding:20px;
+  width:250px;
+  animation:breathe 4s infinite alternate;
+  opacity:0;
+  transform:translateY(20px);
+}
+.testimonial.show{
+  opacity:1;
+  transform:translateY(0);
+  transition:all .8s ease-out;
+}
+.testimonial p{font-size:1em;}
 
 /* Contato */
-.contact {
-  background: rgba(255,255,255,0.05);
-  border-radius: 12px;
-  padding: 25px;
-  width: 90%;
-  max-width: 600px;
-  margin: auto;
-  margin-bottom: 80px;
+.contact{
+  background:rgba(255,255,255,0.05);
+  border-radius:12px;
+  padding:25px;
+  width:90%;
+  max-width:600px;
+  margin:auto;
+  margin-bottom:80px;
+  opacity:0;
+  transform:translateY(20px);
 }
-.contact input, .contact textarea {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 12px;
-  border-radius: 6px;
-  border: 1px solid #00f0ff;
-  background: rgba(0,0,0,0.2);
-  color: #fff;
+.contact.show{
+  opacity:1;
+  transform:translateY(0);
+  transition:all .8s ease-out;
 }
-.contact button {
-  padding: 12px 20px;
-  border: none;
-  border-radius: 8px;
-  background: #00f0ff;
-  color: #000;
-  font-weight: bold;
-  cursor: pointer;
-  transition: 0.3s;
+.contact input,.contact textarea{
+  width:100%;
+  padding:10px;
+  margin-bottom:12px;
+  border-radius:6px;
+  border:1px solid #00f0ff;
+  background:rgba(0,0,0,0.2);
+  color:#fff;
 }
-.contact button:hover { background: #00d4ff; transform: scale(1.05); }
+.contact button{
+  padding:12px 20px;
+  border:none;
+  border-radius:8px;
+  background:#00f0ff;
+  color:#000;
+  font-weight:bold;
+  cursor:pointer;
+  transition:.3s;
+}
+.contact button:hover{background:#00d4ff;transform:scale(1.05);}
 
 /* WhatsApp flutuante */
-.whatsapp-float {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  font-size: 2em;
-  color: #25D366;
-  z-index: 100;
-  transition: transform 0.3s;
+.whatsapp-float{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  font-size:2.2em;
+  color:#25D366;
+  z-index:100;
+  transition:transform .3s;
 }
-.whatsapp-float:hover { transform: scale(1.2); }
+.whatsapp-float:hover{transform:scale(1.2);}
 
 /* Rodapé */
-.footer {
-  text-align: center;
-  padding: 15px 0;
-  color: #00f0ff;
-  font-size: 0.9em;
-  opacity: 0.7;
+.footer{
+  text-align:center;
+  padding:15px 0;
+  color:#00f0ff;
+  font-size:.9em;
+  opacity:.8;
 }
-.footer:hover { opacity: 1; }
+.footer:hover{opacity:1;}
 
 /* Animações */
-@keyframes glowPulse {
-  0% { text-shadow: 0 0 5px #00ffff,0 0 10px #00d4ff,0 0 20px #00ffff,0 0 30px #00d4ff,0 0 40px #00ffff; }
-  50% { text-shadow: 0 0 10px #00ffff,0 0 20px #00d4ff,0 0 30px #00ffff,0 0 40px #00d4ff,0 0 50px #00ffff; }
-  100% { text-shadow: 0 0 5px #00ffff,0 0 10px #00d4ff,0 0 20px #00ffff,0 0 30px #00d4ff,0 0 40px #00ffff; }
+@keyframes glowPulse{
+  0%{text-shadow:0 0 5px #00ffff,0 0 10px #00d4ff;}
+  50%{text-shadow:0 0 20px #00ffff,0 0 40px #00d4ff;}
+  100%{text-shadow:0 0 5px #00ffff,0 0 10px #00d4ff;}
 }
-@keyframes fadeInText { 0%{opacity:0;}100%{opacity:1;} }
-@keyframes glowText { 0%{text-shadow:0 0 10px #00ffff;}50%{text-shadow:0 0 20px #00ffff;}100%{text-shadow:0 0 10px #00ffff;} }
-@keyframes breathe {0%{transform:scale(1);}50%{transform:scale(1.03);}100%{transform:scale(1);}}
+@keyframes fadeInText{0%{opacity:0;}100%{opacity:1;}}
+@keyframes glowText{0%{text-shadow:0 0 10px #00ffff;}50%{text-shadow:0 0 25px #00ffff;}100%{text-shadow:0 0 10px #00ffff;}}
+@keyframes breathe{0%{transform:scale(1);}50%{transform:scale(1.03);}100%{transform:scale(1);}}
 
 /* Canvas */
-canvas { position:fixed; top:0; left:0; width:100vw; height:100vh; z-index:0; }
+canvas{position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:0;}
 
-/* Media Queries */
-@media (max-width:768px){
-  h1{font-size:2.2em;}
+/* Responsivo */
+@media(max-width:768px){
+  h1{font-size:2.3em;}
   p{font-size:1em;}
-  .btn-home{padding:10px 20px; font-size:0.9em;}
-  nav {justify-content:center; gap:15px;}
-  .sections, .diferenciais, .testimonials {gap:20px;}
-  .card, .testimonial, .about{width:90%;}
+  .btn-home{padding:10px 20px;font-size:.9em;}
+  .social-icons a{font-size:2em;}
+  .card,.testimonial,.about,.contact{width:90%;}
 }
 </style>
 </head>
 <body>
 
 <canvas id="background"></canvas>
-
-<!-- Menu fixo -->
-<nav>
-  <a href="#sobre">Sobre</a>
-  <a href="#cursos">Cursos</a>
-  <a href="#contato">Contato</a>
-</nav>
 
 <div class="container">
   <h1>Si-Axis</h1>
@@ -232,13 +252,11 @@ canvas { position:fixed; top:0; left:0; width:100vw; height:100vh; z-index:0; }
   </div>
 </div>
 
-<!-- Sobre -->
-<div class="about" id="sobre">
+<div class="about">
   <h3>Sobre a Si-Axis</h3>
   <p>“Na Si-Axis, você aprende tecnologia, hardware e Inteligência Artificial de forma prática e aplicada. Transforme conhecimento em habilidade, desenvolva competências sólidas e crie soluções que respeitam o meio ambiente, ajudando a construir um futuro mais sustentável.”</p>
 </div>
 
-<!-- Diferenciais -->
 <div class="diferenciais" id="cursos">
   <div class="card">
     <h3>Aprendizado Prático</h3>
@@ -263,7 +281,6 @@ canvas { position:fixed; top:0; left:0; width:100vw; height:100vh; z-index:0; }
   </div>
 </div>
 
-<!-- Depoimentos -->
 <div class="testimonials">
   <div class="testimonial">
     <h3>João Silva</h3>
@@ -275,7 +292,6 @@ canvas { position:fixed; top:0; left:0; width:100vw; height:100vh; z-index:0; }
   </div>
 </div>
 
-<!-- Contato -->
 <div class="contact" id="contato">
   <h3>Contato</h3>
   <input type="text" placeholder="Nome">
@@ -284,75 +300,56 @@ canvas { position:fixed; top:0; left:0; width:100vw; height:100vh; z-index:0; }
   <button>Enviar</button>
 </div>
 
-<!-- WhatsApp flutuante -->
 <a href="https://wa.me/5511949354732" class="whatsapp-float" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
 
-<!-- Rodapé -->
 <footer class="footer">
   <p>@Si-Axis © 2025</p>
 </footer>
 
 <script>
-const canvas = document.getElementById('background');
-const ctx = canvas.getContext('2d');
-
-function resizeCanvas(){
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-}
+/* fundo animado */
+const canvas=document.getElementById('background');
+const ctx=canvas.getContext('2d');
+function resizeCanvas(){canvas.width=window.innerWidth;canvas.height=window.innerHeight;}
 resizeCanvas();
-
-const particles = [];
-const particleCount = 72;
-
+const particles=[];const particleCount=72;
 for(let i=0;i<particleCount;i++){
-  particles.push({
-    x:Math.random()*canvas.width,
-    y:Math.random()*canvas.height,
-    vx:(Math.random()-0.5)*1,
-    vy:(Math.random()-0.5)*1,
-    size:Math.random()*2+1
-  });
+  particles.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,vx:(Math.random()-0.5)*1,vy:(Math.random()-0.5)*1,size:Math.random()*2+1});
 }
-
 function draw(){
   ctx.fillStyle='rgba(0,0,0,0.13)';
   ctx.fillRect(0,0,canvas.width,canvas.height);
-
   for(let i=0;i<particles.length;i++){
     let p=particles[i];
     ctx.beginPath();
     ctx.arc(p.x,p.y,p.size,0,Math.PI*2);
     ctx.fillStyle='#00f0ff';
     ctx.fill();
-
-    p.x+=p.vx;
-    p.y+=p.vy;
-
-    if(p.x>canvas.width)p.x=0;
-    if(p.x<0)p.x=canvas.width;
-    if(p.y>canvas.height)p.y=0;
-    if(p.y<0)p.y=canvas.height;
-
+    p.x+=p.vx;p.y+=p.vy;
+    if(p.x>canvas.width)p.x=0;if(p.x<0)p.x=canvas.width;
+    if(p.y>canvas.height)p.y=0;if(p.y<0)p.y=canvas.height;
     for(let j=i+1;j<particles.length;j++){
       let p2=particles[j];
-      let dx=p.x-p2.x;
-      let dy=p.y-p2.y;
-      let dist=Math.sqrt(dx*dx+dy*dy);
+      let dx=p.x-p2.x,dy=p.y-p2.y,dist=Math.sqrt(dx*dx+dy*dy);
       if(dist<120){
         ctx.beginPath();
         ctx.strokeStyle='rgba(0,240,255,'+(1-dist/120)+')';
-        ctx.moveTo(p.x,p.y);
-        ctx.lineTo(p2.x,p2.y);
-        ctx.stroke();
+        ctx.moveTo(p.x,p.y);ctx.lineTo(p2.x,p2.y);ctx.stroke();
       }
     }
   }
   requestAnimationFrame(draw);
 }
 draw();
-
 window.addEventListener('resize',resizeCanvas);
+
+/* efeito ao rolar */
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){entry.target.classList.add('show');}
+  });
+},{threshold:0.1});
+document.querySelectorAll('.about,.card,.testimonial,.contact').forEach(el=>observer.observe(el));
 </script>
 </body>
 </html>
