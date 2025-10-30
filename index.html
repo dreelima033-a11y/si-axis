@@ -64,8 +64,8 @@ p {
   animation: fadeInText 3s ease-in-out forwards;
 }
 
-/* Botão principal */
-.btn-home {
+/* Botões */
+.btn-home, .card a {
   display: inline-block;
   padding: 12px 25px;
   background: #00f0ff;
@@ -73,11 +73,11 @@ p {
   font-weight: bold;
   border-radius: 8px;
   text-decoration: none;
-  margin-bottom: 60px;
+  margin-top: 10px;
   transition: transform 0.3s, background 0.3s;
   animation: breathe 3s infinite alternate;
 }
-.btn-home:hover {
+.btn-home:hover, .card a:hover {
   background: #00d4ff;
   transform: scale(1.1);
 }
@@ -120,9 +120,7 @@ p {
   opacity:0;
   transform: translateY(50px);
 }
-.card.visible {
-  animation: fadeInUp 1s forwards;
-}
+.card.visible { animation: fadeInUp 1s forwards; }
 .card:hover {
   background: rgba(255,255,255,0.15);
   transform: translateY(-10px);
@@ -246,11 +244,11 @@ canvas { position:fixed; top:0; left:0; width:100vw; height:100vh; z-index:0; }
   <a href="#cursos" class="btn-home">Ver Cursos</a>
 
   <div class="social-icons">
-    <a href="https://go.hotmart.com/O101872807C?dp=1" title="Hotmart"><i class="fa-solid fa-fire"></i></a>
-    <a href="https://www.youtube.com/@Si-Axis" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
-    <a href="#" title="X"><i class="fa-brands fa-x-twitter"></i></a>
-    <a href="#" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
-    <a href="https://wa.me/5511949354732" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+    <a href="https://go.hotmart.com/O101872807C?dp=1" title="Hotmart" target="_blank"><i class="fa-solid fa-fire"></i></a>
+    <a href="https://www.youtube.com/@Si-Axis" title="YouTube" target="_blank"><i class="fa-brands fa-youtube"></i></a>
+    <a href="https://twitter.com/Siaxis" title="X" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
+    <a href="https://www.instagram.com/siaxis" title="Instagram" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+    <a href="https://wa.me/5511949354732" title="WhatsApp" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
   </div>
 </div>
 
@@ -268,6 +266,7 @@ canvas { position:fixed; top:0; left:0; width:100vw; height:100vh; z-index:0; }
       <li>Projetos reais</li>
       <li>Aplicação imediata</li>
     </ul>
+    <a href="https://www.youtube.com/@Si-Axis" target="_blank">Ver Aula</a>
   </div>
   <div class="card">
     <h3>Professores Experientes</h3>
@@ -275,6 +274,7 @@ canvas { position:fixed; top:0; left:0; width:100vw; height:100vh; z-index:0; }
       <li>Instrutores especializados</li>
       <li>Suporte contínuo</li>
     </ul>
+    <a href="https://www.canva.com/" target="_blank">Ver Conteúdo</a>
   </div>
   <div class="card">
     <h3>Foco em Tecnologia</h3>
@@ -282,6 +282,7 @@ canvas { position:fixed; top:0; left:0; width:100vw; height:100vh; z-index:0; }
       <li>Hardware</li>
       <li>Inteligência Artificial</li>
     </ul>
+    <a href="https://www.youtube.com/@Si-Axis" target="_blank">Ver Aula</a>
   </div>
 </div>
 
